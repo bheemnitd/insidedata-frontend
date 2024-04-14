@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.31770c0d.css",
+    "main.js": "/static/js/main.de4e8623.js",
+    "static/js/787.5b9df8f1.chunk.js": "/static/js/787.5b9df8f1.chunk.js",
+    "static/media/background.png": "/static/media/background.c045f205201b73ef9f7e.png",
+    "static/media/java_intermediate.png": "/static/media/java_intermediate.f3c0eb7ab13fb8194fb8.png",
+    "static/media/problem_solving_basic.png": "/static/media/problem_solving_basic.db1ce078e9aff3064a0e.png",
+    "static/media/python_basic.png": "/static/media/python_basic.1b6dcf5e0d1eb7cea8f4.png",
+    "static/media/java_basic.png": "/static/media/java_basic.87c1f3f9063c9a124e95.png",
+    "static/media/sql_basic.png": "/static/media/sql_basic.f68b3d2e0a9131c3a513.png",
+    "static/media/python_advance.jpg": "/static/media/python_advance.d0b8e7f16505893ab36a.jpg",
+    "static/media/azure_fundamentals.png": "/static/media/azure_fundamentals.a262e9e714989c65551a.png",
+    "index.html": "/index.html",
+    "main.31770c0d.css.map": "/static/css/main.31770c0d.css.map",
+    "main.de4e8623.js.map": "/static/js/main.de4e8623.js.map",
+    "787.5b9df8f1.chunk.js.map": "/static/js/787.5b9df8f1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31770c0d.css",
+    "static/js/main.de4e8623.js"
+  ]
+}

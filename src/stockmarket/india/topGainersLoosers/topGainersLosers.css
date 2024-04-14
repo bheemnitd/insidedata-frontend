@@ -1,0 +1,32 @@
+/*body {*/
+/*    background-color: rgba(6, 8, 9, 0.88);*/
+/*    !*text-shadow: 0 4px 8px rgba(0, 0, 0, 1);*!*/
+/*}*/
+.card {
+    /* RGBA color with 50% opacity */
+    /*background-color: rgba(255, 255, 255, 0.0); !* RGBA color with 50% opacity *!*/
+    /*background: linear-gradient(to right, rgba(247, 255, 0, 1), rgba(166, 134, 231, 0.32), rgb(210, 127, 213));*/
+
+    /*border: 1px solid #ccc;*/
+    background-color: transparent;
+
+    overflow: auto;
+    /*border-radius: 10px;*/
+    /*border:none;*/
+}
+.top-losers {
+    background-color: rgba(255, 0, 0, 0.48);
+    box-shadow: 0 4px 8px rgb(255, 0, 0);
+}
+
+.top-gainers {
+        background-color: rgba(0, 255, 49, 0.38);
+        box-shadow: 0 4px 8px rgb(0, 255, 34);
+
+}
+
+
+.card-body{
+      background-color: transparent; /* Set the background color to transparent */
+
+}
