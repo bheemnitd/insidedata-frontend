@@ -1,0 +1,158 @@
+{
+  "_id": "",
+  "username": "",
+  "password": "",
+  "data": {
+    "personalInfo": {
+      "name": "",
+      "title": "",
+      "email": "",
+      "phone": "",
+      "location": "",
+      "summary": "",
+      "linkedin": "",
+      "github": "",
+      "profilePicture": "",
+      "website": "",
+      "socialLinks": {
+        "twitter": "",
+        "facebook": "",
+        "instagram": ""
+      }
+    },
+    "experience": [
+      {
+        "company": "",
+        "position": "",
+        "startDate": "",
+        "endDate": "",
+        "isCurrentPosition": false,
+        "description": "",
+        "technologies": [],
+        "achievements": [],
+        "location": "",
+        "highlights": []
+      }
+    ],
+    "education": [
+      {
+        "degree": "",
+        "institution": "",
+        "year": "",
+        "description": "",
+        "gpa": "",
+        "fieldOfStudy": "",
+        "location": "",
+        "achievements": [],
+        "courses": []
+      }
+    ],
+    "skills": [
+      {
+        "category": "",
+        "items": [],
+        "level": "",
+        "yearsOfExperience": ""
+      }
+    ],
+    "projects": [
+      {
+        "name": "",
+        "description": "",
+        "technologies": [],
+        "link": "",
+        "startDate": "",
+        "endDate": "",
+        "isOngoing": false,
+        "highlights": [],
+        "role": "",
+        "teamSize": "",
+        "achievements": []
+      }
+    ],
+    "certificates": [
+      {
+        "id": "",
+        "name": "",
+        "type": "pdf",
+        "url": "",
+        "folder": "",
+        "issueDate": "",
+        "expiryDate": "",
+        "issuingOrganization": "",
+        "credentialId": "",
+        "credentialUrl": ""
+      }
+    ],
+    "languages": [
+      {
+        "name": "",
+        "proficiency": "",
+        "certification": ""
+      }
+    ],
+    "publications": [
+      {
+        "title": "",
+        "authors": [],
+        "journal": "",
+        "date": "",
+        "doi": "",
+        "url": "",
+        "abstract": ""
+      }
+    ],
+    "volunteerWork": [
+      {
+        "organization": "",
+        "role": "",
+        "startDate": "",
+        "endDate": "",
+        "description": "",
+        "highlights": []
+      }
+    ],
+    "awards": [
+      {
+        "title": "",
+        "issuer": "",
+        "date": "",
+        "description": "",
+        "url": ""
+      }
+    ],
+    "references": [
+      {
+        "name": "",
+        "position": "",
+        "company": "",
+        "email": "",
+        "phone": "",
+        "relationship": ""
+      }
+    ],
+    "customSections": [
+      {
+        "title": "",
+        "items": []
+      }
+    ],
+    "preferences": {
+      "theme": "light",
+      "fontSize": "medium",
+      "layout": "modern",
+      "colorScheme": "blue",
+      "showProfilePicture": true,
+      "showSocialLinks": true,
+      "showReferences": false,
+      "showCustomSections": true
+    },
+    "metadata": {
+      "lastUpdated": "",
+      "version": "1.0",
+      "createdAt": "",
+      "lastModifiedBy": "",
+      "template": "default"
+    }
+  }
+}
