@@ -1,8 +1,6 @@
 import {useState} from "react";
 import Dashboard from "../dashboard/Dashboard";
-import About from "../../../about/About";
-import Login from "../../../auth/Login";
-import Signup from "../../../auth/Signup";
+import About from "../../../components/About";
 import CandleStickChart from "../chart/CandleStickChart";
 import RazorpayComponent from "../razorpay/Razorpay"
 
@@ -104,8 +102,6 @@ function Home() {
               </nav>
             <div className="container-fluid overflow-auto" style={{height: '94vh', marginTop: '6vh'}}>
                 {showAbout ? <About /> : null}
-                {showLogin ? <Login /> : null}
-                {showSignup ? <Signup /> : null}
                 {showDashboard ? <Dashboard /> : null}
                 {setCandleStickChart ? <CandleStickChart /> : null}
               </div>

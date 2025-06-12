@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ResumeData, Experience, Education, Skill, Project, Certificate } from '../types/resume';
 import { resumeService } from '../services/resumeService';
 import { FaFilePdf, FaImage, FaFolder, FaFolderOpen } from 'react-icons/fa';
-
+// import { FaFolder } from 'react-icons/fa';
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
@@ -564,7 +564,7 @@ const ResumeBuilder: React.FC = () => {
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(false);
-    
+
     const files = e.dataTransfer.files;
     if (!files.length) return;
 
@@ -794,7 +794,7 @@ const ResumeBuilder: React.FC = () => {
                       type="checkbox"
                       id={`current-position-${index}`}
                       checked={exp.isCurrentPosition}
-                      onChange={(e) => handleUpdateExperience(index, { ...exp, isCurrentPosition: e.target.checked })}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleUpdateExperience(index, { ...exp, isCurrentPosition: e.target.checked })}
                     />
                     <CheckboxLabel htmlFor={`current-position-${index}`}>
                       I currently work here
@@ -806,7 +806,7 @@ const ResumeBuilder: React.FC = () => {
                       <Input
                         type="date"
                         value={exp.endDate || ''}
-                        onChange={(e) => handleUpdateExperience(index, { ...exp, endDate: e.target.value })}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleUpdateExperience(index, { ...exp, endDate: e.target.value })}
                         required={!exp.isCurrentPosition}
                       />
                     </FormGroup>
@@ -815,7 +815,7 @@ const ResumeBuilder: React.FC = () => {
                     <Label>Description</Label>
                     <TextArea
                       value={exp.description}
-                      onChange={(e) => handleUpdateExperience(index, { ...exp, description: e.target.value })}
+                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleUpdateExperience(index, { ...exp, description: e.target.value })}
                       required
                     />
                   </FormGroup>
@@ -824,13 +824,18 @@ const ResumeBuilder: React.FC = () => {
                     <Input
                       type="text"
                       value={exp.technologies.join(', ')}
-                      onChange={(e) => handleUpdateExperience(index, { ...exp, technologies: e.target.value.split(',').map(tech => tech.trim()) })}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        handleUpdateExperience(index, {
+                          ...exp,
+                          technologies: e.target.value.split(',').map((tech: string) => tech.trim()),
+                        })
+                      }
                       placeholder="e.g., React, TypeScript, Node.js"
                     />
                   </FormGroup>
                   <ButtonGroup>
-                    <ActionButton 
-                      type="button" 
+                    <ActionButton
+                      type="button"
                       className="delete"
                       onClick={() => handleDeleteExperience(index)}
                     >
@@ -857,7 +862,7 @@ const ResumeBuilder: React.FC = () => {
                     <Input
                       type="text"
                       value={edu.degree}
-                      onChange={(e) => handleUpdateEducation(index, { ...edu, degree: e.target.value })}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleUpdateEducation(index, { ...edu, degree: e.target.value })}
                       required
                     />
                   </FormGroup>
@@ -866,7 +871,7 @@ const ResumeBuilder: React.FC = () => {
                     <Input
                       type="text"
                       value={edu.institution}
-                      onChange={(e) => handleUpdateEducation(index, { ...edu, institution: e.target.value })}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleUpdateEducation(index, { ...edu, institution: e.target.value })}
                       required
                     />
                   </FormGroup>
@@ -875,7 +880,7 @@ const ResumeBuilder: React.FC = () => {
                     <Input
                       type="text"
                       value={edu.year}
-                      onChange={(e) => handleUpdateEducation(index, { ...edu, year: e.target.value })}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleUpdateEducation(index, { ...edu, year: e.target.value })}
                       required
                     />
                   </FormGroup>
@@ -883,12 +888,12 @@ const ResumeBuilder: React.FC = () => {
                     <Label>Description (Optional)</Label>
                     <TextArea
                       value={edu.description || ""}
-                      onChange={(e) => handleUpdateEducation(index, { ...edu, description: e.target.value })}
+                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleUpdateEducation(index, { ...edu, description: e.target.value })}
                     />
                   </FormGroup>
                   <ButtonGroup>
-                    <ActionButton 
-                      type="button" 
+                    <ActionButton
+                      type="button"
                       className="delete"
                       onClick={() => handleDeleteEducation(index)}
                     >
@@ -915,7 +920,7 @@ const ResumeBuilder: React.FC = () => {
                     <Input
                       type="text"
                       value={skill.category}
-                      onChange={(e) => handleUpdateSkillCategory(index, { ...skill, category: e.target.value })}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleUpdateSkillCategory(index, { ...skill, category: e.target.value })}
                       required
                     />
                   </FormGroup>
@@ -923,13 +928,13 @@ const ResumeBuilder: React.FC = () => {
                     <Label>Items</Label>
                     <TextArea
                       value={skill.items.join('\n')}
-                      onChange={(e) => handleUpdateSkillCategory(index, { ...skill, items: e.target.value.split('\n') })}
+                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleUpdateSkillCategory(index, { ...skill, items: e.target.value.split('\n') })}
                       required
                     />
                   </FormGroup>
                   <ButtonGroup>
-                    <ActionButton 
-                      type="button" 
+                    <ActionButton
+                      type="button"
                       className="delete"
                       onClick={() => handleDeleteSkillCategory(index)}
                     >
@@ -956,7 +961,7 @@ const ResumeBuilder: React.FC = () => {
                     <Input
                       type="text"
                       value={project.name}
-                      onChange={(e) => handleUpdateProject(index, { ...project, name: e.target.value })}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleUpdateProject(index, { ...project, name: e.target.value })}
                       required
                     />
                   </FormGroup>
@@ -964,7 +969,7 @@ const ResumeBuilder: React.FC = () => {
                     <Label>Description</Label>
                     <TextArea
                       value={project.description}
-                      onChange={(e) => handleUpdateProject(index, { ...project, description: e.target.value })}
+                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleUpdateProject(index, { ...project, technologies: e.target.value.split('\n') })}
                       required
                     />
                   </FormGroup>
@@ -972,8 +977,7 @@ const ResumeBuilder: React.FC = () => {
                     <Label>Technologies</Label>
                     <TextArea
                       value={project.technologies.join('\n')}
-                      onChange={(e) => handleUpdateProject(index, { ...project, technologies: e.target.value.split('\n') })}
-                      required
+                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleUpdateProject(index, { ...project, technologies: e.target.value.split('\n') })} required
                     />
                   </FormGroup>
                   <FormGroup>
@@ -981,13 +985,13 @@ const ResumeBuilder: React.FC = () => {
                     <Input
                       type="text"
                       value={project.link}
-                      onChange={(e) => handleUpdateProject(index, { ...project, link: e.target.value })}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleUpdateProject(index, { ...project, link: e.target.value })}
                       required
                     />
                   </FormGroup>
                   <ButtonGroup>
-                    <ActionButton 
-                      type="button" 
+                    <ActionButton
+                      type="button"
                       className="delete"
                       onClick={() => handleDeleteProject(index)}
                     >
@@ -1006,19 +1010,19 @@ const ResumeBuilder: React.FC = () => {
 
           <Section>
             <SectionTitle>Certificates & Documents</SectionTitle>
-            
+
             <div className="flex gap-4 mb-6">
-              <FolderButton onClick={createFolder}>
+              {/* <FolderButton onClick={createFolder}>
                 <FaFolder className="text-yellow-500" />
                 Create New Folder
-              </FolderButton>
-              
-              {currentFolder && (
+              </FolderButton> */}
+
+              {/* {currentFolder && (
                 <FolderButton onClick={() => setCurrentFolder('')}>
                   <FaFolderOpen className="text-blue-500" />
                   {currentFolder}
                 </FolderButton>
-              )}
+              )} */}
             </div>
 
             <FileUploadArea
@@ -1045,10 +1049,12 @@ const ResumeBuilder: React.FC = () => {
 
             {Object.entries(groupedCertificates).map(([folder, certs]) => (
               <div key={folder} className="mt-6">
-                <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                {/* <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
                   {folder === 'root' ? 'Root' : folder}
-                  <FaFolder className="text-yellow-500" />
-                </h3>
+                  <span>
+                    <FaFolder className="text-yellow-500" />
+                  </span>
+                </h3> */}
                 <CertificateGrid>
                   {certs.map(cert => (
                     <CertificateCard key={cert.id}>
