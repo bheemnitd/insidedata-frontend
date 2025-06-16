@@ -12,7 +12,7 @@ import {
 import { FaDatabase, FaServer, FaCode, FaTools, FaLaptopCode, FaJava, FaMicrosoft, FaWindows, FaCodeBranch } from 'react-icons/fa';
 
 const TabContent = styled.div`
-  background: white;
+  background: transparent;
   border-radius: 8px;
   padding: 2rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -25,14 +25,14 @@ const SkillsGrid = styled.div`
 `;
 
 const SkillCategory = styled.div`
-  background: #f8f9fa;
+  background: transparent;
   padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid #eee;
+  // border-radius: 8px;
+  border-left: 4px solid #eee;
 `;
 
 const CategoryTitle = styled.h3`
-  color: #333;
+  color: white;
   margin-bottom: 1rem;
   font-size: 1.2rem;
   padding-bottom: 0.5rem;
@@ -46,7 +46,7 @@ const SkillList = styled.ul`
 `;
 
 const SkillItem = styled.li`
-  color: #444;
+  color: white;
   padding: 0.5rem 0;
   display: flex;
   align-items: center;

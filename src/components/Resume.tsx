@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Document, Page, pdfjs, PDFDocumentProxy } from 'react-pdf';
+
 // @ts-ignore
 import { jsPDF } from 'jspdf';
 // @ts-ignore
 import 'jspdf-autotable';
 
 // Set up PDF.js worker
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.js',
-  import.meta.url,
-).toString();
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const TabContent = styled.div`
   padding: 2rem;
@@ -404,4 +402,4 @@ const Resume: React.FC = () => {
   );
 };
 
-export default Resume; 
+export default Resume;

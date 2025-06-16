@@ -11,7 +11,8 @@ const TabContent = styled.div`
 `;
 
 const ProjectCard = styled.div`
-  background: rgba(255, 255, 255, 0.05);
+  border-left: 4px solid #f8f9fa;
+  background: rgba(255, 255, 255, 0);
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
@@ -22,8 +23,8 @@ const ProjectCard = styled.div`
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 0);
   }
 `;
 
@@ -104,6 +105,8 @@ const Tools = styled.div`
 const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   return (
     <TabContent>
+          <h2>Skills & Technologies</h2>
+
       {projects.map((project, index) => (
         <ProjectCard key={index}>
           {project.logo && (

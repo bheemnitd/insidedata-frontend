@@ -24,7 +24,7 @@ const Section = styled.section`
 `;
 
 const Title = styled.h1`
-  color: #333;
+  // color: #333;
   font-size: 2rem;
   margin-bottom: 1rem;
 `;
@@ -54,7 +54,7 @@ const ListItem = styled.li`
 `;
 
 const TabContent = styled.div`
-  background: white;
+  background: transparent;
   border-radius: 8px;
   padding: 2rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -63,13 +63,13 @@ const TabContent = styled.div`
 const EducationCard = styled.div`
   margin-bottom: 2.5rem;
   padding: 2rem;
-  border-left: 4px solid #00fff7;
-  background: #f8f9fa;
+  border-left: 4px solid #f8f9fa;
   border-radius: 0 12px 12px 0;
   transition: transform 0.2s ease;
   display: flex;
   gap: 2rem;
   align-items: center;
+  // box-shadow: 0 2px 4px rgb(0, 0, 0);
 
   &:hover {
     transform: translateX(10px);
@@ -106,13 +106,13 @@ const ContentContainer = styled.div`
 `;
 
 const Degree = styled.h3`
-  color: #333;
+  color: white;
   margin-bottom: 0.5rem;
   font-size: 1.4rem;
 `;
 
 const College = styled.a`
-  color: #00fff7;
+  color:rgb(255, 255, 255);
   text-decoration: none;
   font-weight: 500;
   display: block;

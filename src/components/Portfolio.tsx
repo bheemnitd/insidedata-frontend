@@ -20,9 +20,9 @@ const Container = styled.div`
 `;
 
 const Navbar = styled.nav`
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0);
   backdrop-filter: blur(10px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgb(0, 0, 0);
   padding: 1rem 2rem;
   position: fixed;
   top: 0;
@@ -33,16 +33,16 @@ const Navbar = styled.nav`
 
 const NavBrand = styled.a`
   font-weight: 700;
-  color: #333;
   text-decoration: none;
   font-size: 1.5rem;
+  color: #999;
   &:hover {
-    color: #00fff7;
+    color:rgb(255, 255, 255);
   }
 `;
 
 const NavLink = styled.a<{ active?: boolean; disabled?: boolean }>`
-  color: ${props => props.active ? '#00fff7' : props.disabled ? '#999' : '#666'};
+  color: ${props => props.active ? 'rgb(255, 255, 255);' : props.disabled ? '#999' : '#999'};
   text-decoration: none;
   padding: 0.5rem 1rem;
   margin: 0 0.5rem;
@@ -52,7 +52,7 @@ const NavLink = styled.a<{ active?: boolean; disabled?: boolean }>`
   opacity: ${props => props.disabled ? '0.5' : '1'};
   
   &:hover {
-    color: ${props => props.disabled ? '#999' : '#00fff7'};
+    color: ${props => props.disabled ? '#999' : 'rgb(255, 255, 255);'};
   }
 `;
 
@@ -66,10 +66,11 @@ const ContentContainer = styled.div`
   
   /* Add a semi-transparent background to content sections */
   > div {
-    background: rgba(255, 255, 255, 0.9);
+    // background: rgba(0, 0, 0, 0.27);
     backdrop-filter: blur(10px);
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgb(0, 0, 0);
+    color: #999;
   }
 `;
 
@@ -79,7 +80,6 @@ const LoadingContainer = styled.div`
   align-items: center;
   height: 100vh;
   font-size: 1.2rem;
-  color: #666;
 `;
 
 const ErrorContainer = styled.div`

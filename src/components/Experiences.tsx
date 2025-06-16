@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TabContent = styled.div`
-  background: white;
+  background: transparent;
   border-radius: 8px;
   padding: 2rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -11,8 +11,8 @@ const TabContent = styled.div`
 const ExperienceCard = styled.div`
   margin-bottom: 2.5rem;
   padding: 2rem;
-  border-left: 4px solid #00fff7;
-  background: #f8f9fa;
+  border-left: 4px solid #f8f9fa;
+  background: transparent;
   border-radius: 0 12px 12px 0;
   transition: transform 0.2s ease;
   display: flex;
@@ -54,13 +54,13 @@ const ContentContainer = styled.div`
 `;
 
 const Title = styled.h3`
-  color: #333;
+  color: white;
   margin-bottom: 0.5rem;
   font-size: 1.4rem;
 `;
 
 const Company = styled.a`
-  color: #00fff7;
+  color:rgb(255, 255, 255);
   text-decoration: none;
   font-weight: 500;
   display: block;
@@ -78,7 +78,7 @@ const Duration = styled.p`
 `;
 
 const Description = styled.p`
-  color: #444;
+  color: white
   line-height: 1.6;
 `;
 

@@ -1,137 +1,69 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
+// Define props for the Landing component
 interface LandingProps {
   onExploreClick: () => void;
 }
 
-const START_DATE = new Date('2018-06-01');
-
-const calculateExperience = () => {
-  const now = new Date();
-  const diffTime = Math.abs(now.getTime() - START_DATE.getTime());
-  const diffYears = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 365));
-  const diffMonths = Math.floor((diffTime % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
-  return { years: diffYears, months: diffMonths };
-};
-
 const Container = styled.div`
   min-height: 100vh;
   width: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/landing-bg.jpg') center center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #00fff7;
-  text-shadow: 0 0 10px #00fff7;
+  text-shadow: 0 0 10pxrgb(0, 0, 0);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 2rem;
+  z-index: 1;
+  filter: grayscale(100%); /* Apply black-and-white filter to the background image */
 `;
 
 const ContentWrapper = styled.div`
+  text-align: justify; /* Align text to justify */
+  width: 100%;
   max-width: 800px;
-  text-align: center;
+  padding: 0 2rem;
 `;
 
 const Title = styled.h1`
   font-size: 3.5rem;
   font-weight: 900;
   margin-bottom: 1.5rem;
-  background: linear-gradient(45deg, #00fff7, #88f0ff);
+  background: linear-gradient(45deg,rgb(0, 0, 0),rgb(255, 255, 255));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
 
-const Subtitle = styled.p`
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  color: #88f0ffcc;
-  line-height: 1.6;
-`;
-
-const Description = styled.div`
+const Button = styled.button`
+  margin-top: 1rem;
+  padding: 0.8rem 2rem;
   font-size: 1.2rem;
-  margin-bottom: 3rem;
-  color: #ffffff;
-  line-height: 1.8;
-  text-shadow: none;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 2rem;
-  border-radius: 15px;
-  backdrop-filter: blur(5px);
-`;
-
-const EnterButton = styled.button`
-  padding: 1rem 3rem;
-  background: #00fff7;
+  font-weight: bold;
   color: #111;
-  font-weight: 700;
-  border-radius: 12px;
-  text-decoration: none;
-  font-size: 1.2rem;
-  box-shadow: 0 0 15px #00fff7aa;
-  transition: all 0.3s ease;
+  background: linear-gradient(45deg,rgb(255, 255, 255),rgb(255, 0, 162));
   border: none;
+  border-radius: 8px;
   cursor: pointer;
+  box-shadow: 0 0 10pxrgb(0, 0, 0);
+  transition: all 0.3s ease;
+
   &:hover {
-    background: #00d4c7;
-    transform: translateY(-2px);
-    box-shadow: 0 0 20px #00fff7cc;
+  background: linear-gradient(45deg,rgb(255, 0, 191),rgb(255, 255, 255));
+    box-shadow: 0 0 15pxrgb(0, 255, 247);
   }
 `;
 
-const ExperienceBadge = styled.div`
-  background: rgba(0, 255, 247, 0.1);
-  border: 1px solid #00fff7;
-  border-radius: 20px;
-  padding: 0.5rem 1.5rem;
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
-  color: #00fff7;
-  display: inline-block;
-`;
-
 const Landing: React.FC<LandingProps> = ({ onExploreClick }) => {
-  const { years, months } = calculateExperience();
-  const [name, setName] = useState<string>('Loading...');
-  const [intro, setIntro] = useState<string>('Loading...');
-
-  useEffect(() => {
-    const fetchResumeData = async () => {
-      try {
-        const response = await fetch('/data/resume.json'); // Ensure the file is in the public folder
-        const resumeData = await response.json();
-
-        // Filter the resume data based on default username and password
-        const filteredResume = resumeData.resumes.find(
-          (resume: any) => resume.username === 'bheem.kumar' && resume.password === '12'
-        );
-
-        if (filteredResume) {
-          setName(filteredResume.data.personalInfo?.name || 'Unknown Name');
-          setIntro(filteredResume.data.personalInfo?.intro || 'No introduction available.');
-        } else {
-          console.error('No matching resume found for the given username and password.');
-        }
-      } catch (error) {
-        console.error('Error fetching resume data:', error);
-      }
-    };
-
-    fetchResumeData();
-  }, []);
-
   return (
     <Container>
       <ContentWrapper>
-        <Title>{name}</Title>
-        <Subtitle>Building the future through code</Subtitle>
-        <ExperienceBadge>
-          Overall {years} {years === 1 ? 'year' : 'years'} and {months} {months === 1 ? 'month' : 'months'} of experience
-        </ExperienceBadge>
-        <Description>{intro}</Description>
-        <EnterButton onClick={onExploreClick}>Explore More</EnterButton>
+        <Title>Welcome to My Portfolio</Title>
+        <p>
+          Explore my portfolio to learn more about my skills, experience, and projects. I am passionate about building scalable and efficient solutions that make a difference.
+        </p>
+        <Button onClick={onExploreClick}>Explore More</Button>
       </ContentWrapper>
     </Container>
   );
