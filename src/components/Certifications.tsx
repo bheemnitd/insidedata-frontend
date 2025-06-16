@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Viewer, Worker } from '@react-pdf-viewer/core';
-import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
+import { Document, Page, pdfjs } from 'react-pdf';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+
+// Set up PDF.js worker
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const TabContent = styled.div`
   background: transparent;
   border-radius: 8px;
-  padding: 2rem;
+  padding: 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 `;
 
 const TabContainer = styled.div`
@@ -16,60 +19,80 @@ const TabContainer = styled.div`
   gap: 1rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
+  padding: 0 1rem;
 `;
 
 const Tab = styled.button<{ active: boolean }>`
   padding: 0.75rem 1.5rem;
-  background: ${props => props.active ? '#00fff7' : 'rgba(255, 255, 255, 0.9)'};
-  color: ${props => props.active ? '#111' : '#666'};
+  background: ${props => props.active ? '#00fff7' : 'rgba(255, 255, 255, 0.05)'};
+  color: ${props => props.active ? '#111' : '#fff'};
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-weight: ${props => props.active ? '600' : '400'};
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
   &:hover {
-    background: ${props => props.active ? '#00fff7' : 'rgba(255, 255, 255, 0.95)'};
+    background: ${props => props.active ? '#00fff7' : 'rgba(255, 255, 255, 0.1)'};
     transform: translateY(-2px);
   }
 `;
 
-const CertGrid = styled.div`
+const CertificationsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 1rem;
+  padding: 0 1rem;
 `;
 
-const CertCard = styled.div`
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
+const CertificateCategory = styled.div`
+  background: transparent;
   padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 4px solid #eee;
+`;
+
+const CategoryTitle = styled.h3`
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #00fff7;
+`;
+
+const CertificateList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const CertificateItem = styled.div`
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
   }
 `;
 
 const PreviewContainer = styled.div`
   width: 100%;
-  height: 200px;
-  position: relative;
-  background: white;
-  border-radius: 8px;
+  height: 300px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-const ImagePreview = styled.img`
+const PreviewImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -79,131 +102,105 @@ const ImagePreview = styled.img`
 const PDFPreview = styled.div`
   width: 100%;
   height: 100%;
-  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0;
 
-  .rpv-core__viewer {
+  .react-pdf__Document {
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .rpv-core__page-layer {
-    width: 100% !important;
-    height: 100% !important;
+  .react-pdf__Page {
+    margin: 0;
+    padding: 0;
   }
 
-  .rpv-core__page {
-    width: 100% !important;
-    height: 100% !important;
+  .react-pdf__Page canvas {
+    max-width: 100%;
+    height: auto !important;
   }
 `;
 
-const CertTitle = styled.h3`
-  color: #333;
-  margin: 0;
-  font-size: 1.2rem;
-  text-align: center;
+const CertificateDetails = styled.div`
+  color: white;
 `;
 
-const Issuer = styled.p`
-  color: #666;
-  margin: 0;
-  font-size: 0.9rem;
-  text-align: center;
+const CertificateName = styled.h4`
+  margin: 0 0 0.5rem 0;
+  color: #00fff7;
 `;
 
-const Year = styled.p`
-  color: #666;
+const CertificateInfo = styled.p`
   margin: 0;
   font-size: 0.9rem;
-  text-align: center;
+  color: #ccc;
 `;
 
-const CertLink = styled.a`
+const VerifyLink = styled.a`
   color: #00fff7;
   text-decoration: none;
-  font-weight: 500;
+  font-size: 0.9rem;
   display: inline-block;
-  padding: 0.5rem 1rem;
-  border: 1px solid #00fff7;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  text-align: center;
-  margin-top: auto;
-
+  margin-top: 0.5rem;
+  
   &:hover {
-    background: #00fff7;
-    color: white;
+    text-decoration: underline;
   }
 `;
 
-const Modal = styled.div<{ isOpen: boolean }>`
-  display: ${props => props.isOpen ? 'flex' : 'none'};
+const Modal = styled.div`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 1000;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
   padding: 2rem;
 `;
 
 const ModalContent = styled.div`
-  background: white;
-  padding: 1rem;
-  border-radius: 12px;
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 8px;
   max-width: 90%;
   max-height: 90vh;
-  position: relative;
   overflow: auto;
-`;
-
-const ModalImage = styled.img`
-  max-width: 100%;
-  max-height: 80vh;
-  object-fit: contain;
-`;
-
-const ModalPDF = styled.div`
-  width: 100%;
-  height: 100%;
-
-  .rpv-core__viewer {
-    width: 100%;
-    height: 100%;
-  }
+  position: relative;
 `;
 
 const CloseButton = styled.button`
   position: absolute;
-  top: -1rem;
-  right: -1rem;
-  background: #00fff7;
-  color: #111;
+  top: 1rem;
+  right: 1rem;
+  background: none;
   border: none;
-  border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
-  font-size: 1.2rem;
+  color: white;
+  font-size: 1.5rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 0.5rem;
+  z-index: 1;
 
   &:hover {
-    background: #00d4c7;
+    color: #00fff7;
   }
 `;
 
 interface Certificate {
   name: string;
   path: string;
-  type: 'pdf' | 'image';
-  issuingAuthority?: string;
-  year?: string;
+  type: 'image' | 'pdf';
+  issuingAuthority: string;
+  year: string;
   link?: string;
 }
 
@@ -211,7 +208,7 @@ interface CertificationsProps {
   certifications: Certificate[];
 }
 
-const categoryNames = {
+const categoryNames: { [key: string]: string } = {
   'ai': 'AI & Machine Learning',
   'algorithm': 'Algorithms',
   'cloud': 'Cloud & DevOps',
@@ -224,70 +221,123 @@ const categoryNames = {
 
 const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
   const [selectedTab, setSelectedTab] = useState<string>('language');
-  const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
-  const [certificates, setCertificates] = useState<{ [key: string]: Certificate[] }>({});
-  const defaultLayoutPluginInstance = defaultLayoutPlugin();
+  const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
+  const [certificateImages, setCertificateImages] = useState<{ [key: string]: string }>({});
+  const [certificatePdfs, setCertificatePdfs] = useState<{ [key: string]: string }>({});
+
+  // Group certificates by category based on their path
+  const getCategory = (path: string): string => {
+    const match = path.match(/certificates\/([^/]+)/);
+    return match ? match[1] : 'others';
+  };
+
+  const groupedCertificates = certifications.reduce((acc, cert) => {
+    const category = getCategory(cert.path);
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(cert);
+    return acc;
+  }, {} as { [key: string]: Certificate[] });
 
   useEffect(() => {
-    // Group certificates by category
-    const groupedCerts = certifications.reduce((acc, cert) => {
-      const category = cert.path.split('/')[0];
-      if (!acc[category]) {
-        acc[category] = [];
-      }
-      acc[category].push(cert);
-      return acc;
-    }, {} as { [key: string]: Certificate[] });
+    const loadAssets = async () => {
+      const imagePromises = certifications
+        .filter(cert => cert.type === 'image')
+        .map(async (cert) => {
+          try {
+            // Use public assets path
+            const imagePath = cert.path.replace('src/assets/', '/assets/');
+            return { [cert.path]: imagePath };
+          } catch (error) {
+            console.error(`Error loading image for ${cert.name}:`, error);
+            return { [cert.path]: '' };
+          }
+        });
 
-    setCertificates(groupedCerts);
+      const pdfPromises = certifications
+        .filter(cert => cert.type === 'pdf')
+        .map(async (cert) => {
+          try {
+            // Use public assets path
+            const pdfPath = cert.path.replace('src/assets/', '/assets/');
+            return { [cert.path]: pdfPath };
+          } catch (error) {
+            console.error(`Error loading PDF for ${cert.name}:`, error);
+            return { [cert.path]: '' };
+          }
+        });
+
+      const [imageResults, pdfResults] = await Promise.all([
+        Promise.all(imagePromises),
+        Promise.all(pdfPromises)
+      ]);
+
+      const images = imageResults.reduce((acc, curr) => ({ ...acc, ...curr }), {});
+      const pdfs = pdfResults.reduce((acc, curr) => ({ ...acc, ...curr }), {});
+
+      setCertificateImages(images);
+      setCertificatePdfs(pdfs);
+    };
+
+    loadAssets();
   }, [certifications]);
 
-  const handleImageClick = (cert: Certificate) => {
-    setSelectedCert(cert);
+  const handleCertificateClick = (cert: Certificate) => {
+    setSelectedCertificate(cert);
   };
 
   const handleCloseModal = () => {
-    setSelectedCert(null);
+    setSelectedCertificate(null);
   };
 
   const renderPreview = (cert: Certificate) => {
-    if (cert.type === 'pdf') {
+    if (cert.type === 'image') {
       return (
-        <PDFPreview>
-          <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-            <Viewer
-              fileUrl={cert.path}
-              plugins={[defaultLayoutPluginInstance]}
-              defaultScale={0.5}
-            />
-          </Worker>
-        </PDFPreview>
+        <PreviewContainer>
+          <PreviewImage 
+            src={certificateImages[cert.path]} 
+            alt={cert.name}
+          />
+        </PreviewContainer>
       );
-    } else {
-      return <ImagePreview src={cert.path} alt={cert.name} />;
+    } else if (cert.type === 'pdf') {
+      return (
+        <PreviewContainer>
+          <PDFPreview>
+            <Document file={certificatePdfs[cert.path]}>
+              <Page pageNumber={1} width={280} />
+            </Document>
+          </PDFPreview>
+        </PreviewContainer>
+      );
     }
+    return null;
   };
 
-  const renderModalContent = (cert: Certificate) => {
-    if (cert.type === 'pdf') {
+  const renderCertificateContent = (cert: Certificate) => {
+    if (cert.type === 'image') {
       return (
-        <ModalPDF>
-          <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-            <Viewer
-              fileUrl={cert.path}
-              plugins={[defaultLayoutPluginInstance]}
-            />
-          </Worker>
-        </ModalPDF>
+        <PreviewImage 
+          src={certificateImages[cert.path]} 
+          alt={cert.name}
+          style={{ maxWidth: '100%', maxHeight: '80vh' }}
+          onClick={() => window.open(cert.link, '_blank')}
+        />
       );
-    } else {
-      return <ModalImage src={cert.path} alt={cert.name} />;
+    } else if (cert.type === 'pdf') {
+      return (
+        <Document file={certificatePdfs[cert.path]}>
+          <Page pageNumber={1} width={1000} />
+        </Document>
+      );
     }
+    return null;
   };
 
   return (
     <TabContent>
-      <h2>Certifications</h2>
+      <h2 style={{ padding: '0 2rem' }}>Certifications</h2>
       <TabContainer>
         {Object.entries(categoryNames).map(([key, name]) => (
           <Tab
@@ -300,34 +350,41 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
         ))}
       </TabContainer>
 
-      <CertGrid>
-        {certificates[selectedTab]?.map((cert, index) => (
-          <CertCard key={index}>
-            <PreviewContainer onClick={() => handleImageClick(cert)}>
-              {renderPreview(cert)}
-            </PreviewContainer>
-            <CertTitle>{cert.name}</CertTitle>
-            {cert.issuingAuthority && <Issuer>{cert.issuingAuthority}</Issuer>}
-            {cert.year && <Year>Year: {cert.year}</Year>}
-            {cert.link && (
-              <CertLink href={cert.link} target="_blank" rel="noopener noreferrer">
-                Verify Certificate
-              </CertLink>
-            )}
-          </CertCard>
+      <CertificationsGrid>
+        {groupedCertificates[selectedTab]?.map((cert, index) => (
+          <CertificateItem 
+            key={index}
+            onClick={() => handleCertificateClick(cert)}
+          >
+            {renderPreview(cert)}
+            <CertificateDetails>
+              <CertificateName>{cert.name}</CertificateName>
+              <CertificateInfo>
+                {cert.issuingAuthority} • {cert.year}
+              </CertificateInfo>
+              {cert.link && (
+                <VerifyLink 
+                  href={cert.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  Verify Certificate
+                </VerifyLink>
+              )}
+            </CertificateDetails>
+          </CertificateItem>
         ))}
-      </CertGrid>
+      </CertificationsGrid>
 
-      <Modal isOpen={!!selectedCert} onClick={handleCloseModal}>
-        <ModalContent onClick={e => e.stopPropagation()}>
-          {selectedCert && (
-            <>
-              <CloseButton onClick={handleCloseModal}>×</CloseButton>
-              {renderModalContent(selectedCert)}
-            </>
-          )}
-        </ModalContent>
-      </Modal>
+      {selectedCertificate && (
+        <Modal onClick={handleCloseModal}>
+          <ModalContent onClick={e => e.stopPropagation()}>
+            <CloseButton onClick={handleCloseModal}>&times;</CloseButton>
+            {renderCertificateContent(selectedCertificate)}
+          </ModalContent>
+        </Modal>
+      )}
     </TabContent>
   );
 };

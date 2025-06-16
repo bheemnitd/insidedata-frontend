@@ -42,8 +42,9 @@ const NavBrand = styled.a`
 `;
 
 const NavLink = styled.a<{ active?: boolean; disabled?: boolean }>`
-  color: ${props => props.active ? 'rgb(255, 255, 255);' : props.disabled ? '#999' : '#999'};
-  text-decoration: none;
+  color: ${props => props.active ? 'rgb(255, 255, 255)' : props.disabled ? '#999' : 'rgb(255, 255, 255)'};
+  text-decoration: ${props => props.active ? 'underline' : 'none'};
+  text-underline-offset: 8px;
   padding: 0.5rem 1rem;
   margin: 0 0.5rem;
   font-weight: ${props => props.active ? '600' : '400'};
@@ -52,7 +53,9 @@ const NavLink = styled.a<{ active?: boolean; disabled?: boolean }>`
   opacity: ${props => props.disabled ? '0.5' : '1'};
   
   &:hover {
-    color: ${props => props.disabled ? '#999' : 'rgb(255, 255, 255);'};
+    color: ${props => props.disabled ? '#999' : 'rgb(255, 255, 255)'};
+    text-decoration: ${props => props.disabled ? 'none' : 'underline'};
+    text-underline-offset: 8px;
   }
 `;
 
@@ -148,7 +151,7 @@ function Portfolio() {
                 return <Projects projects={resumeData.projects} />;
             case 'skills':
                 return <Skills skills={{
-                    programmingLanguages: resumeData.programmingLanguages,
+                    language: resumeData.programmingLanguages,
                     frameworksAndLibraries: resumeData.frameworksAndLibraries,
                     tools: resumeData.tools,
                     technologies: resumeData.technologies,

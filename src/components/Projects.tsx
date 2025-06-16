@@ -8,11 +8,16 @@ interface ProjectsProps {
 
 const TabContent = styled.div`
   padding: 20px;
+
+  h2 {
+    color: white;
+    margin-bottom: 2rem;
+  }
 `;
 
 const ProjectCard = styled.div`
-  border-left: 4px solid #f8f9fa;
-  background: rgba(255, 255, 255, 0);
+  border-left: 4px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
@@ -23,23 +28,24 @@ const ProjectCard = styled.div`
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgb(0, 0, 0);
-    background: rgba(255, 255, 255, 0);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.05);
   }
 `;
 
 const LogoContainer = styled.div`
-  width: 120px;
-  height: 120px;
-  min-width: 120px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 15px;
+  width: 150px;
+  height: 150px;
+  min-width: 150px;
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
 
   ${ProjectCard}:hover & {
     transform: scale(1.05);
@@ -48,9 +54,10 @@ const LogoContainer = styled.div`
 `;
 
 const ProjectLogo = styled.img`
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 `;
 
 const ContentContainer = styled.div`
@@ -84,16 +91,18 @@ const Company = styled.div`
 `;
 
 const Duration = styled.div`
-  color: #8892b0;
+  color: white;
   font-size: 0.9em;
   margin-bottom: 10px;
+  opacity: 0.8;
 `;
 
 const Description = styled.p`
-  color: #8892b0;
+  color: white;
   font-size: 0.9em;
   line-height: 1.6;
   margin: 0;
+  opacity: 0.9;
 `;
 
 const Tools = styled.div`

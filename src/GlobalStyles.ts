@@ -13,8 +13,40 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Arial', sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6, p, span, div {
-    color: inherit; /* Inherit the global text color */
+  /* Base text elements */
+  h1, h2, h3, h4, h5, h6, p, span, div, a {
+    color: white;
+  }
+
+  /* Specific overrides */
+  input, textarea {
+    color: #333;
+    background: white;
+  }
+
+  /* Links */
+  a {
+    color: white;
+    text-decoration: none;
+    
+    &:hover {
+      color: #00fff7;
+    }
+  }
+
+  /* Form elements */
+  button {
+    color: #333;
+  }
+
+  /* Modal content */
+  .modal-content {
+    color: #333;
+  }
+
+  /* Table elements */
+  th, td {
+    color: white;
   }
 `;
 

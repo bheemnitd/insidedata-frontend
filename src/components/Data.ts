@@ -6,7 +6,7 @@ import problemSolvingBasic from '../assets/certificates/problem_solving_basic.pn
 import sqlBasic from '../assets/certificates/sql_basic.png';
 import pythonBasic from '../assets/certificates/python_basic.png';
 import javaBasic from '../assets/certificates/java_basic.png';
-import myImage from '../assets/background.png';
+import beagleLogo from '../assets/BeagleGPT-logo.png';
 
 export const personalInfo = {
   name: 'Bheem Kumar',
@@ -15,14 +15,14 @@ Proficient in designing low-latency and highly scalable solutions, ensuring opti
 Skilled in leveraging Python to build robust web applications and RESTFull APIs, with a keen focus on delivering high-quality solutions that meet business objectives.
 Passionate about continuous learning and staying updated with the latest technologies and best practices in software development.
 Strong problem-solving abilities and a collaborative team player committed to driving innovation and achieving project success.`,
-  image: myImage,
+  image: '/background.png',
 };
 
 export const contact = {
   name: 'Bheem Kumar',
   email: 'bheemnitd@gmail.com',
   phone: '+91 (878) 936-7377',
-  address: 'Gurugram INDIA',
+  address: 'Hyderabad INDIA',
   linkedIn: 'https://www.linkedin.com/in/bheem-kumar-1b294113a/',
   github: 'https://github.com/bheemnitd',
   Portfolio: 'https://insidedata.in',
@@ -65,28 +65,26 @@ export const workExperience = [
   },
 ];
 
-export const programmingLanguages = [
-  'Python', 'SQL', 'NoSQL', 'JavaScript', 'Java', 'C', 'C++', 'HTML', 'CSS'
-];
-
-export const tools = [
-  'MySQL', 'MongoDB', 'Docker', 'Redis', 'Celery', 'GIT', 'Excel', 'Postman', 'Jira', 'Pycharm', 'VS Code',
-  'Jupyter notebook', 'Colab'
-];
-
-export const technologies = [
-  'Agile Methodology', 'System Design', 'Software Design', 'Project Deployment', 'Async Paradigm', 'Multitasking', 'OOPS', 'Data structures',
-  'Algorithms', 'Data Visualisation', 'ORM', 'Unit Testing', 'Postman'
-];
-
-export const os = [
-  'Linux', 'Mac', 'Windows'
-];
+export const language = ['Python', 'SQL', 'NoSQL', 'JavaScript', 'Java', 'C', 'C++', 'HTML', 'CSS'];
 
 export const frameworksAndLibraries = [
   'Django', 'Flask', 'FastAPI', 'DjangoRestFramework', 'PySpark', 'OpenAPI',
-  'Numpy', 'Pandas', 'Tensorflow', 'Keras', 'OpenCV', 'Sklearn', 'Matplotlib', 'Bootstrap', 'Jquery', 'ReactJS'
+  'Numpy', 'Pandas', 'Tensorflow', 'Keras', 'OpenCV', 'Sklearn', 'Matplotlib', 
+  'Bootstrap', 'Jquery', 'ReactJS'
 ];
+
+export const tools = [
+  'MySQL', 'MongoDB', 'Docker', 'Redis', 'Celery', 'GIT', 'Excel', 'Postman', 
+  'Jira', 'Pycharm', 'VS Code', 'Jupyter notebook', 'Colab'
+];
+
+export const technologies = [
+  'Agile Methodology', 'System Design', 'Software Design', 'Project Deployment', 
+  'Async Paradigm', 'Multitasking', 'OOPS', 'Data structures', 'Algorithms', 
+  'Data Visualisation', 'ORM', 'Unit Testing'
+];
+
+export const os = ['Linux', 'Mac', 'Windows'];
 
 export interface Project {
   name: string;
@@ -97,6 +95,7 @@ export interface Project {
   ended: string;
   url?: string;
   logo?: string;
+  alt?: string;
 }
 
 export const projects = [
@@ -104,9 +103,12 @@ export const projects = [
     name: 'Beagle',
     company: "decisionpoint.ai",
     description: 'In Beagle, I excelled in building API documentation with OpenAPI Swagger Hub, bug identification, and crafting a module for extracting valuable insights from log files.',
-    tools: "Python | Django | OpenAPI ",
+    tools: "Python | Django | OpenAPI",
     started: '2024',
     ended: '2023',
+    url: "https://decisionpoint.ai/beagle",
+    logo: beagleLogo,
+    alt: "BeagleGPT Logo"
   },
   {
     name: 'Kelloggs Command Center',

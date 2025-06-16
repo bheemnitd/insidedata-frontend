@@ -1,75 +1,82 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-// Import all certificate images
-import sqlBasic from '../assets/certificates/sql_basic.png';
-import pythonBasic from '../assets/certificates/python_basic.png';
-import pythonAdvance from '../assets/certificates/python_advance.jpg';
-import problemSolvingBasic from '../assets/certificates/problem_solving_basic.png';
-import javaIntermediate from '../assets/certificates/java_intermediate.png';
-import javaBasic from '../assets/certificates/java_basic.png';
-import azureFundamentals from '../assets/certificates/azure_fundamentals.png';
-
 // Define types
 interface Certificate {
   src: string;
   title: string;
+  type?: 'pdf' | 'image';
 }
 
 interface CertificateCategory {
   images: Certificate[];
 }
 
-type CertificateCategories = {
+interface CertificateCategories {
   [key: string]: CertificateCategory;
+}
+
+// Certificate data with paths from public directory
+const certificateCategories: CertificateCategories = {
+  'Programming Languages': {
+    images: [
+      { src: '/certificates/python_basic.png', title: 'Python Basic', type: 'image' },
+      { src: '/certificates/python_advance.jpg', title: 'Python Advanced', type: 'image' },
+      { src: '/certificates/java_basic.png', title: 'Java Basic', type: 'image' },
+      { src: '/certificates/java_intermediate.png', title: 'Java Intermediate', type: 'image' },
+      { src: '/certificates/sql_basic.png', title: 'SQL Basic', type: 'image' }
+    ]
+  },
+  'Cloud & DevOps': {
+    images: [
+      { src: '/certificates/azure_fundamentals.png', title: 'Azure Fundamentals', type: 'image' }
+    ]
+  },
+  'Data Structures & Algorithms': {
+    images: [
+      { src: '/certificates/problem_solving_basic.png', title: 'Problem Solving Basic', type: 'image' }
+    ]
+  }
 };
 
-const Container = styled.div`
+const TabContent = styled.div`
   padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
 `;
 
-const CategoryTabs = styled.div`
+const CategoryButtons = styled.div`
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
   flex-wrap: wrap;
-  justify-content: center;
 `;
 
-const CategoryTab = styled.button<{ active: boolean }>`
-  padding: 10px 20px;
+const CategoryButton = styled.button<{ active: boolean }>`
+  padding: 8px 16px;
   border: none;
-  border-radius: 5px;
-  background: ${props => props.active ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.1)'};
-  color: white;
+  border-radius: 4px;
+  background: ${props => props.active ? '#64ffda' : 'rgba(255, 255, 255, 0.1)'};
+  color: ${props => props.active ? '#000' : '#fff'};
   cursor: pointer;
   transition: all 0.3s ease;
-  font-weight: ${props => props.active ? 'bold' : 'normal'};
-  text-transform: uppercase;
-  font-size: 0.9rem;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: ${props => props.active ? '#64ffda' : 'rgba(255, 255, 255, 0.2)'};
   }
 `;
 
 const BadgeGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
-  padding: 20px 0;
+  margin-top: 20px;
 `;
 
-const BadgeCard = styled.div`
+const BadgeItem = styled.div`
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  overflow: hidden;
+  border-radius: 8px;
+  padding: 15px;
   transition: transform 0.3s ease;
   cursor: pointer;
-  position: relative;
-  aspect-ratio: 16/9;
 
   &:hover {
     transform: translateY(-5px);
@@ -78,19 +85,19 @@ const BadgeCard = styled.div`
 
 const BadgeImage = styled.img`
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
-const BadgeTitle = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 10px;
-  font-size: 0.9rem;
+const BadgeTitle = styled.h3`
+  color: #fff;
+  margin: 10px 0;
+  font-size: 1rem;
   text-align: center;
 `;
 
@@ -108,119 +115,99 @@ const Modal = styled.div`
   padding: 20px;
 `;
 
-const ModalImage = styled.img`
+const ModalContent = styled.div`
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
   max-width: 90%;
   max-height: 90vh;
-  object-fit: contain;
+  overflow: auto;
+  position: relative;
 `;
 
 const CloseButton = styled.button`
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 10px;
+  right: 10px;
   background: none;
   border: none;
-  color: white;
+  color: #000;
   font-size: 24px;
   cursor: pointer;
+  padding: 5px;
   z-index: 1001;
-`;
 
-const CategoryTitle = styled.h2`
-  color: white;
-  text-align: center;
-  margin: 20px 0;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-`;
-
-// Define certificate categories and their images
-const certificateCategories: CertificateCategories = {
-  'Programming Languages': {
-    images: [
-      { src: pythonBasic, title: 'Python Basic' },
-      { src: pythonAdvance, title: 'Python Advanced' },
-      { src: javaBasic, title: 'Java Basic' },
-      { src: javaIntermediate, title: 'Java Intermediate' },
-      { src: sqlBasic, title: 'SQL Basic' }
-    ]
-  },
-  'Cloud & DevOps': {
-    images: [
-      { src: azureFundamentals, title: 'Azure Fundamentals' }
-    ]
-  },
-  'Data Structures & Algorithms': {
-    images: [
-      { src: problemSolvingBasic, title: 'Problem Solving Basic' }
-    ]
-  },
-  'Design Patterns': {
-    images: []
-  },
-  'AI & Machine Learning': {
-    images: []
-  },
-  'Agile & Others': {
-    images: []
+  &:hover {
+    color: #666;
   }
-};
+`;
+
+const PreviewImage = styled.img`
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+`;
+
+const PDFPreview = styled.iframe`
+  width: 100%;
+  height: 80vh;
+  border: none;
+`;
 
 const Badges: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('Programming Languages');
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>(Object.keys(certificateCategories)[0]);
+  const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
 
-  const handleImageClick = (imageSrc: string) => {
-    setSelectedImage(imageSrc);
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
+  };
+
+  const handleCertificateClick = (certificate: Certificate) => {
+    setSelectedCertificate(certificate);
   };
 
   const closeModal = () => {
-    setSelectedImage(null);
+    setSelectedCertificate(null);
   };
 
-  // Close modal on escape key press
-  React.useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        closeModal();
-      }
-    };
-
-    window.addEventListener('keydown', handleEscape);
-    return () => window.removeEventListener('keydown', handleEscape);
-  }, []);
-
   return (
-    <Container>
-      <CategoryTabs>
+    <TabContent>
+      <h2>Certificates & Badges</h2>
+      <CategoryButtons>
         {Object.keys(certificateCategories).map((category) => (
-          <CategoryTab
+          <CategoryButton
             key={category}
             active={selectedCategory === category}
-            onClick={() => setSelectedCategory(category)}
+            onClick={() => handleCategoryClick(category)}
           >
             {category}
-          </CategoryTab>
+          </CategoryButton>
         ))}
-      </CategoryTabs>
+      </CategoryButtons>
 
-      <CategoryTitle>{selectedCategory}</CategoryTitle>
       <BadgeGrid>
-        {certificateCategories[selectedCategory].images.map((cert: Certificate, index: number) => (
-          <BadgeCard key={index} onClick={() => handleImageClick(cert.src)}>
-            <BadgeImage src={cert.src} alt={cert.title} />
-            <BadgeTitle>{cert.title}</BadgeTitle>
-          </BadgeCard>
+        {certificateCategories[selectedCategory].images.map((certificate, index) => (
+          <BadgeItem key={index} onClick={() => handleCertificateClick(certificate)}>
+            <BadgeImage src={certificate.src} alt={certificate.title} />
+            <BadgeTitle>{certificate.title}</BadgeTitle>
+          </BadgeItem>
         ))}
       </BadgeGrid>
 
-      {selectedImage && (
+      {selectedCertificate && (
         <Modal onClick={closeModal}>
-          <CloseButton onClick={closeModal}>×</CloseButton>
-          <ModalImage src={selectedImage} alt="Certificate Preview" onClick={(e) => e.stopPropagation()} />
+          <ModalContent onClick={(e) => e.stopPropagation()}>
+            <CloseButton onClick={closeModal}>&times;</CloseButton>
+            <h2>{selectedCertificate.title}</h2>
+            {selectedCertificate.type === 'pdf' ? (
+              <PDFPreview src={selectedCertificate.src} title={selectedCertificate.title} />
+            ) : (
+              <PreviewImage src={selectedCertificate.src} alt={selectedCertificate.title} />
+            )}
+          </ModalContent>
         </Modal>
       )}
-    </Container>
+    </TabContent>
   );
 };
 

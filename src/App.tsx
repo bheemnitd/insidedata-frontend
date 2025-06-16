@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import GlobalStyles from './GlobalStyles';
 import Landing from './components/Landing';
 import Portfolio from './components/Portfolio';
+import Background from './components/Background';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
+      <Background />
       <Router>
         {showPortfolio ? (
           <Portfolio />

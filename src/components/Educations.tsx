@@ -58,28 +58,33 @@ const TabContent = styled.div`
   border-radius: 8px;
   padding: 2rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+  h2 {
+    color: white;
+    margin-bottom: 2rem;
+  }
 `;
 
 const EducationCard = styled.div`
   margin-bottom: 2.5rem;
   padding: 2rem;
-  border-left: 4px solid #f8f9fa;
+  border-left: 4px solid rgba(255, 255, 255, 0.1);
   border-radius: 0 12px 12px 0;
   transition: transform 0.2s ease;
   display: flex;
   gap: 2rem;
   align-items: center;
-  // box-shadow: 0 2px 4px rgb(0, 0, 0);
 
   &:hover {
     transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.05);
   }
 `;
 
 const LogoContainer = styled.div`
   flex-shrink: 0;
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,6 +93,7 @@ const LogoContainer = styled.div`
   padding: 1rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.2s ease;
+  overflow: hidden;
 
   &:hover {
     transform: scale(1.05);
@@ -95,8 +101,8 @@ const LogoContainer = styled.div`
 `;
 
 const CollegeLogo = styled.img`
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 `;
@@ -125,9 +131,10 @@ const College = styled.a`
 `;
 
 const Year = styled.p`
-  color: #666;
+  color: white;
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
+  opacity: 0.8;
 `;
 
 const Educations: React.FC<EducationsProps> = ({ education }) => {

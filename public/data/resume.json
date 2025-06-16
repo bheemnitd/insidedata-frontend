@@ -20,18 +20,18 @@
         },
         "education": [
           {
-            "degree": "Master of Computer Application",
+            "degree": "Master of Computer Applications",
             "college": "National Institute of Technology Durgapur",
             "year": "Graduated in 2018",
             "url": "https://nitdgp.ac.in/",
             "logo": "https://upload.wikimedia.org/wikipedia/ta/d/d1/NIT_Durgapur_Logo.png"
           },
           {
-            "degree": "Bachelor of Computer Application",
-            "college": "Nalanda College",
+            "degree": "Bachelor of Computer Applications",
+            "college": "Nalanda College Biharsharif Nalanda",
             "year": "Graduated in 2014",
             "url": "https://nalandacollege.ac.in/",
-            "logo": "data:image/jpeg;base64,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"
+            "logo": "/assets/nalanda-college-logo.jpg"
           }
         ],
         "workExperience": [
@@ -135,14 +135,13 @@
         "projects": [
           {
             "name": "Beagle",
-            "company": "decisionpoint.ai",
-            "description": "In Beagle, I excelled in building API documentation with OpenAPI Swagger Hub, bug identification, and crafting a module for extracting valuable insights from log files.",
-            "tools": "Python | Django | OpenAPI",
-            "started": "2024",
-            "ended": "2023",
-            "url": "https://decisionpoint.ai/beagle",
-            "logo": "https://example.com/logo.png",
-            "alt": "NA"
+            "company": "Decisionpoint.ai",
+            "description": "Beagle is an AI-powered platform that helps businesses automate their decision-making processes. It uses natural language processing and machine learning to analyze business rules and create automated workflows.",
+            "tools": ["React", "TypeScript", "Node.js", "MongoDB", "AWS", "Docker"],
+            "started": "2023",
+            "ended": "Present",
+            "url": "https://decisionpoint.ai/beagle/",
+            "logo": "/assets/BeagleGPT-logo.png"
           },
           {
             "name": "Kelloggs Command Center",
@@ -214,7 +213,7 @@
         "certifications": [
           {
             "name": "Azure Fundamentals",
-            "path": "/assets/certificates/cloud/azure_fundamentals.png",
+            "path": "src/assets/certificates/cloud/azure_fundamentals.png",
             "type": "image",
             "issuingAuthority": "Microsoft",
             "year": "2024",
@@ -222,7 +221,7 @@
           },
           {
             "name": "Python Advance",
-            "path": "/assets/certificates/language/python_advance.jpg",
+            "path": "src/assets/certificates/language/python_advance.jpg",
             "type": "image",
             "issuingAuthority": "Cutshort",
             "year": "2024",
@@ -230,7 +229,7 @@
           },  
           {
             "name": "Java Intermediate",
-            "path": "/assets/certificates/language/java_intermediate.png",
+            "path": "src/assets/certificates/language/java_intermediate.png",
             "type": "image",
             "issuingAuthority": "Hackerrank",
             "year": "2024",
@@ -238,7 +237,7 @@
           },
           {
             "name": "Problem Solving Basic",
-            "path": "/assets/certificates/others/problem_solving_basic.png",
+            "path": "src/assets/certificates/others/problem_solving_basic.png",
             "type": "image",
             "issuingAuthority": "Hackerrank",
             "year": "2024",
@@ -246,7 +245,7 @@
           },
           {
             "name": "SQL Basic",
-            "path": "/assets/certificates/language/sql_basic.png",
+            "path": "src/assets/certificates/language/sql_basic.png",
             "type": "image",
             "issuingAuthority": "Hackerrank",
             "year": "2024",
@@ -254,15 +253,15 @@
           },
           {
             "name": "Python Basic",
-            "path": "/assets/certificates/language/python_basic.png",
+            "path": "src/assets/certificates/language/python_basic.png",
             "type": "image",
-            "issuingAuthority": "Hackerrank",
+            "issuingAuthority": "Hackerrank",  
             "year": "2024",
             "link": "https://www.hackerrank.com/certificates/fac12af1aa54"
           },
           {
             "name": "Java Basic",
-            "path": "/assets/certificates/language/java_basic.png",
+            "path": "src/assets/certificates/language/java_basic.png",
             "type": "image",
             "issuingAuthority": "Hackerrank",
             "year": "2024",
@@ -270,245 +269,245 @@
           },
           {
             "name": "AI Spark",
-            "path": "/assets/certificates/ai/AI Spark.pdf",
+            "path": "src/assets/certificates/ai/AI Spark.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Generative AI and Its Impact to Everyday Business",
-            "path": "/assets/certificates/ai/Generative AI and Its Impact to Everyday Business.pdf",
+            "path": "src/assets/certificates/ai/Generative AI and Its Impact to Everyday Business.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Using AI to Improve the Employee Experience",
-            "path": "/assets/certificates/ai/Using AI to Improve the Employee Experience.pdf",
+            "path": "src/assets/certificates/ai/Using AI to Improve the Employee Experience.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Asymptotic Notation",
-            "path": "/assets/certificates/algorithm/Asymptotic Notation.pdf",
+            "path": "src/assets/certificates/algorithm/Asymptotic Notation.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Merge Sort",
-            "path": "/assets/certificates/algorithm/Merge Sort.pdf",
+            "path": "src/assets/certificates/algorithm/Merge Sort.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Introduction To Dynamic Programming In Python",
-            "path": "/assets/certificates/algorithm/Introduction To Dynamic Programming In Python.pdf",
+            "path": "src/assets/certificates/algorithm/Introduction To Dynamic Programming In Python.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Linked List Data Structure",
-            "path": "/assets/certificates/data-structure/Linked List Data Structure.pdf",
+            "path": "src/assets/certificates/data-structure/Linked List Data Structure.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Stacks Data Structure",
-            "path": "/assets/certificates/data-structure/Stacks Data Structure.pdf",
+            "path": "src/assets/certificates/data-structure/Stacks Data Structure.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Data Structures & Algorithms in Python: Implementing Trees & Graphs",
-            "path": "/assets/certificates/data-structure/Data Structures & Algorithms in Python_ Implementing Trees & Graphs.pdf",
+            "path": "src/assets/certificates/data-structure/Data Structures & Algorithms in Python_ Implementing Trees & Graphs.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Software Design and Development: Design Patterns & SOLID Principles",
-            "path": "/assets/certificates/design-pattern/Software Design and Development_ Design Patterns & SOLID Principles.pdf",
+            "path": "src/assets/certificates/design-pattern/Software Design and Development_ Design Patterns & SOLID Principles.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Python 3",
-            "path": "/assets/certificates/language/Python 3.pdf",
+            "path": "src/assets/certificates/language/Python 3.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Python: Tuples",
-            "path": "/assets/certificates/language/Python_ Tuples.pdf",
+            "path": "src/assets/certificates/language/Python_ Tuples.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Python: List Comprehension",
-            "path": "/assets/certificates/language/Python_ List Comprehension.pdf",
+            "path": "src/assets/certificates/language/Python_ List Comprehension.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Python: Control Flow",
-            "path": "/assets/certificates/language/Python_ Control Flow.pdf",
+            "path": "src/assets/certificates/language/Python_ Control Flow.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Python: Loops",
-            "path": "/assets/certificates/language/Python_ Loops.pdf",
+            "path": "src/assets/certificates/language/Python_ Loops.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Python: Lists",
-            "path": "/assets/certificates/language/Python_ Lists.pdf",
+            "path": "src/assets/certificates/language/Python_ Lists.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Python: Functions",
-            "path": "/assets/certificates/language/Python_ Functions.pdf",
+            "path": "src/assets/certificates/language/Python_ Functions.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Python: Strings",
-            "path": "/assets/certificates/language/Python_ Strings.pdf",
+            "path": "src/assets/certificates/language/Python_ Strings.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Python: Dictionaries",
-            "path": "/assets/certificates/language/Python_ Dictionaries.pdf",
+            "path": "src/assets/certificates/language/Python_ Dictionaries.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Python: Classes",
-            "path": "/assets/certificates/language/Python_ Classes.pdf",
+            "path": "src/assets/certificates/language/Python_ Classes.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Python: Lambda Functions",
-            "path": "/assets/certificates/language/Python_ Lambda Functions.pdf",
+            "path": "src/assets/certificates/language/Python_ Lambda Functions.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Python: Higher-Order Functions",
-            "path": "/assets/certificates/language/Python_ Higher-Order Functions.pdf",
+            "path": "src/assets/certificates/language/Python_ Higher-Order Functions.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Python: Decorators",
-            "path": "/assets/certificates/language/Python_ Decorators.pdf",
+            "path": "src/assets/certificates/language/Python_ Decorators.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Deploying A Simple Python Script With Flask",
-            "path": "/assets/certificates/language/Deploying A Simple Python Script With Flask.pdf",
+            "path": "src/assets/certificates/language/Deploying A Simple Python Script With Flask.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Agile Principles and Methodologies",
-            "path": "/assets/certificates/agile/Agile Principles and Methodologies.pdf",
+            "path": "src/assets/certificates/agile/Agile Principles and Methodologies.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Scrum Methodology",
-            "path": "/assets/certificates/agile/Scrum Methodology.pdf",
+            "path": "src/assets/certificates/agile/Scrum Methodology.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "User Stories",
-            "path": "/assets/certificates/agile/User Stories.pdf",
+            "path": "src/assets/certificates/agile/User Stories.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Project Risk",
-            "path": "/assets/certificates/agile/Project Risk.pdf",
+            "path": "src/assets/certificates/agile/Project Risk.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Communication",
-            "path": "/assets/certificates/agile/Communication.pdf",
+            "path": "src/assets/certificates/agile/Communication.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Advanced Agile Tools and Techniques",
-            "path": "/assets/certificates/agile/Advanced Agile Tools and Techniques.pdf",
+            "path": "src/assets/certificates/agile/Advanced Agile Tools and Techniques.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Final Exam: Agile Foundations",
-            "path": "/assets/certificates/agile/Final Exam_ Agile Foundations.pdf",
+            "path": "src/assets/certificates/agile/Final Exam_ Agile Foundations.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Using Business Etiquette to Increase Your Professionalism",
-            "path": "/assets/certificates/others/Using Business Etiquette to Increase Your Professionalism.pdf",
+            "path": "src/assets/certificates/others/Using Business Etiquette to Increase Your Professionalism.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Global Compliance",
-            "path": "/assets/certificates/others/Global Compliance.pdf",
+            "path": "src/assets/certificates/others/Global Compliance.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "Creating A Safe Work Environment",
-            "path": "/assets/certificates/others/Creating A Safe Work Environment.pdf",
+            "path": "src/assets/certificates/others/Creating A Safe Work Environment.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
           },
           {
             "name": "OS Processes and Threads",
-            "path": "/assets/certificates/others/OS Processes and Threads.pdf",
+            "path": "src/assets/certificates/others/OS Processes and Threads.pdf",
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"

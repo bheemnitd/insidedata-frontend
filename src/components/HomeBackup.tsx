@@ -8,7 +8,6 @@ import problemSolvingBasic from '../assets/certificates/problem_solving_basic.pn
 import sqlBasic from '../assets/certificates/sql_basic.png';
 import pythonBasic from '../assets/certificates/python_basic.png';
 import javaBasic from '../assets/certificates/java_basic.png';
-import myImage from '../assets/background.png';
 // ...existing code...
 const Resume = () => {
 

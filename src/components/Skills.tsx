@@ -47,20 +47,24 @@ const SkillList = styled.ul`
 
 const SkillItem = styled.li`
   color: white;
-  padding: 0.5rem 0;
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  margin-bottom: 1rem;
   
   svg {
     width: 2rem;
     height: 2rem;
     flex-shrink: 0;
   }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 interface SkillsData {
-  programmingLanguages: string[];
+  language: string[];
   frameworksAndLibraries: string[];
   tools: string[];
   technologies: string[];
@@ -241,70 +245,68 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
   };
 
   return (
-    <TabContent>
-      <h2>Skills & Technologies</h2>
-      <SkillsGrid>
-        <SkillCategory>
-          <CategoryTitle>Programming Languages</CategoryTitle>
-          <SkillList>
-            {skills.programmingLanguages.map((lang, index) => (
-              <SkillItem key={index}>
-                {getIcon(lang)}
-                {lang}
-              </SkillItem>
-            ))}
-          </SkillList>
-        </SkillCategory>
-
-        <SkillCategory>
-          <CategoryTitle>Frameworks & Libraries</CategoryTitle>
-          <SkillList>
-            {skills.frameworksAndLibraries.map((framework, index) => (
-              <SkillItem key={index}>
-                {getIcon(framework)}
-                {framework}
-              </SkillItem>
-            ))}
-          </SkillList>
-        </SkillCategory>
-
-        <SkillCategory>
-          <CategoryTitle>Tools</CategoryTitle>
-          <SkillList>
-            {skills.tools.map((tool, index) => (
-              <SkillItem key={index}>
-                {getIcon(tool)}
-                {tool}
-              </SkillItem>
-            ))}
-          </SkillList>
-        </SkillCategory>
-
-        <SkillCategory>
-          <CategoryTitle>Technologies</CategoryTitle>
-          <SkillList>
-            {skills.technologies.map((tech, index) => (
-              <SkillItem key={index}>
-                {getIcon(tech)}
-                {tech}
-              </SkillItem>
-            ))}
-          </SkillList>
-        </SkillCategory>
-
-        <SkillCategory>
-          <CategoryTitle>Operating Systems</CategoryTitle>
-          <SkillList>
-            {skills.os.map((os, index) => (
-              <SkillItem key={index}>
-                {getIcon(os)}
-                {os}
-              </SkillItem>
-            ))}
-          </SkillList>
-        </SkillCategory>
-      </SkillsGrid>
-    </TabContent>
+    <>
+      <TabContent>
+        <h2>Skills & Technologies</h2>
+        <SkillsGrid>
+          <SkillCategory>
+            <CategoryTitle>Languages</CategoryTitle>
+            <SkillList>
+              {skills.language.map((lang: string, index: number) => (
+                <SkillItem key={index}>
+                  {getIcon(lang)}
+                  {lang}
+                </SkillItem>
+              ))}
+            </SkillList>
+          </SkillCategory>
+          <SkillCategory>
+            <CategoryTitle>Frameworks & Libraries</CategoryTitle>
+            <SkillList>
+              {skills.frameworksAndLibraries.map((framework: string, index: number) => (
+                <SkillItem key={index}>
+                  {getIcon(framework)}
+                  {framework}
+                </SkillItem>
+              ))}
+            </SkillList>
+          </SkillCategory>
+          <SkillCategory>
+            <CategoryTitle>Tools</CategoryTitle>
+            <SkillList>
+              {skills.tools.map((tool: string, index: number) => (
+                <SkillItem key={index}>
+                  {getIcon(tool)}
+                  {tool}
+                </SkillItem>
+              ))}
+            </SkillList>
+          </SkillCategory>
+          <SkillCategory>
+            <CategoryTitle>Technologies</CategoryTitle>
+            <SkillList>
+              {skills.technologies.map((tech: string, index: number) => (
+                <SkillItem key={index}>
+                  {getIcon(tech)}
+                  {tech}
+                </SkillItem>
+              ))}
+            </SkillList>
+          </SkillCategory>
+          <SkillCategory>
+            <CategoryTitle>Operating Systems</CategoryTitle>
+            <SkillList>
+              {skills.os.map((os: string, index: number) => (
+                <SkillItem key={index}>
+                  {getIcon(os)}
+                  {os}
+                </SkillItem>
+              ))}
+            </SkillList>
+          </SkillCategory>
+        </SkillsGrid>
+      </TabContent>
+    </>
   );
 };
 
