@@ -1,12 +1,12 @@
 // src/components/Resume/resumeData.js
-const azureFundamentals = require('../assets/certificates/azure_fundamentals.png');
-const pythonAdvance = require('../assets/certificates/python_advance.jpg');
-const javaIntermediate = require('../assets/certificates/java_intermediate.png');
-const problemSolvingBasic = require('../assets/certificates/problem_solving_basic.png');
-const sqlBasic = require('../assets/certificates/sql_basic.png');
-const pythonBasic = require('../assets/certificates/python_basic.png');
-const javaBasic = require('../assets/certificates/java_basic.png');
-const myImage = require('../assets/background.png');
+import azureFundamentals from '../assets/certificates/azure_fundamentals.png';
+import pythonAdvance from '../assets/certificates/python_advance.jpg';
+import javaIntermediate from '../assets/certificates/java_intermediate.png';
+import problemSolvingBasic from '../assets/certificates/problem_solving_basic.png';
+import sqlBasic from '../assets/certificates/sql_basic.png';
+import pythonBasic from '../assets/certificates/python_basic.png';
+import javaBasic from '../assets/certificates/java_basic.png';
+import myImage from '../assets/background.png';
 
 export const personalInfo = {
   name: 'Bheem Kumar',
@@ -88,6 +88,17 @@ export const frameworksAndLibraries = [
   'Numpy', 'Pandas', 'Tensorflow', 'Keras', 'OpenCV', 'Sklearn', 'Matplotlib', 'Bootstrap', 'Jquery', 'ReactJS'
 ];
 
+export interface Project {
+  name: string;
+  company: string;
+  description: string;
+  tools: string;
+  started: string;
+  ended: string;
+  url?: string;
+  logo?: string;
+}
+
 export const projects = [
   {
     name: 'Beagle',
@@ -148,53 +159,280 @@ export const projects = [
 ];
 
 export const certifications = [
+  // AI & Machine Learning
   {
-    name: 'Azure Fundamental',
-    issuingAuthority: 'Microsoft',
-    year: '2022',
-    image: azureFundamentals,
-    link: 'https://www.credly.com/badges/ad7142c9-ad80-43c2-bd07-391598db0eb5',
+    name: "AI Spark",
+    path: "src/assets/certificates/ai/AI Spark.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
   },
   {
-    name: 'Python Advance',
-    issuingAuthority: 'Cutshort',
-    year: '2020',
-    image: pythonAdvance,
-    link: 'https://cutshort.io/certificate/21109',
+    name: "Generative AI and Its Impact to Everyday Business",
+    path: "src/assets/certificates/ai/Generative AI and Its Impact to Everyday Business.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
   },
   {
-    name: 'Java Intermediate',
-    issuingAuthority: 'Hackerrank',
-    year: '2020',
-    image: javaIntermediate,
-    link: 'https://www.hackerrank.com/certificates/4280d4db123c',
+    name: "Using AI to Improve the Employee Experience",
+    path: "src/assets/certificates/ai/Using AI to Improve the Employee Experience.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+
+  // Algorithms
+  {
+    name: "Asymptotic Notation",
+    path: "src/assets/certificates/algorithm/Asymptotic Notation.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
   },
   {
-    name: 'Problem Solving Basic',
-    issuingAuthority: 'Hackerrank',
-    year: '2020',
-    image: problemSolvingBasic,
-    link: 'https://www.hackerrank.com/certificates/d2e0596ca830',
+    name: "Merge Sort",
+    path: "src/assets/certificates/algorithm/Merge Sort.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
   },
   {
-    name: 'SQL Basic',
-    issuingAuthority: 'Hackerrank',
-    year: '2020',
-    image: sqlBasic,
-    link: 'https://www.hackerrank.com/certificates/596db4bc1946',
+    name: "Introduction To Dynamic Programming In Python",
+    path: "src/assets/certificates/algorithm/Introduction To Dynamic Programming In Python.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+
+  // Cloud & DevOps
+  {
+    name: "Azure Fundamentals",
+    path: "src/assets/certificates/cloud/azure_fundamentals.png",
+    type: "image",
+    issuingAuthority: "Microsoft",
+    year: "2024",
+    link: "https://www.credly.com/badges/your-badge-id"
+  },
+
+  // Data Structures
+  {
+    name: "Linked List Data Structure",
+    path: "src/assets/certificates/data-structure/Linked List Data Structure.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
   },
   {
-    name: 'Python Basic',
-    issuingAuthority: 'Hackerrank',
-    year: '2020',
-    image: pythonBasic,
-    link: 'https://www.hackerrank.com/certificates/fac12af1aa54',
+    name: "Stacks Data Structure",
+    path: "src/assets/certificates/data-structure/Stacks Data Structure.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
   },
   {
-    name: 'Java Basic',
-    issuingAuthority: 'Hackerrank',
-    year: '2020',
-    image: javaBasic,
-    link: 'https://www.hackerrank.com/certificates/684f32f39c13',
+    name: "Data Structures & Algorithms in Python: Implementing Trees & Graphs",
+    path: "src/assets/certificates/data-structure/Data Structures & Algorithms in Python_ Implementing Trees & Graphs.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
   },
+
+  // Design Patterns
+  {
+    name: "Software Design and Development: Design Patterns & SOLID Principles",
+    path: "src/assets/certificates/design-pattern/Software Design and Development_ Design Patterns & SOLID Principles.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+
+  // Programming Languages
+  {
+    name: "Python 3",
+    path: "src/assets/certificates/language/Python 3.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Python: Tuples",
+    path: "src/assets/certificates/language/Python_ Tuples.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Python: List Comprehension",
+    path: "src/assets/certificates/language/Python_ List Comprehension.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Python: Control Flow",
+    path: "src/assets/certificates/language/Python_ Control Flow.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Python: Loops",
+    path: "src/assets/certificates/language/Python_ Loops.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Python: Lists",
+    path: "src/assets/certificates/language/Python_ Lists.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Python: Functions",
+    path: "src/assets/certificates/language/Python_ Functions.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Python: Strings",
+    path: "src/assets/certificates/language/Python_ Strings.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Python: Dictionaries",
+    path: "src/assets/certificates/language/Python_ Dictionaries.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Python: Classes",
+    path: "src/assets/certificates/language/Python_ Classes.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Python: Lambda Functions",
+    path: "src/assets/certificates/language/Python_ Lambda Functions.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Python: Higher-Order Functions",
+    path: "src/assets/certificates/language/Python_ Higher-Order Functions.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Python: Decorators",
+    path: "src/assets/certificates/language/Python_ Decorators.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Deploying A Simple Python Script With Flask",
+    path: "src/assets/certificates/language/Deploying A Simple Python Script With Flask.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+
+  // Agile & Scrum
+  {
+    name: "Agile Principles and Methodologies",
+    path: "src/assets/certificates/agile/Agile Principles and Methodologies.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Scrum Methodology",
+    path: "src/assets/certificates/agile/Scrum Methodology.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "User Stories",
+    path: "src/assets/certificates/agile/User Stories.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Project Risk",
+    path: "src/assets/certificates/agile/Project Risk.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Communication",
+    path: "src/assets/certificates/agile/Communication.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Advanced Agile Tools and Techniques",
+    path: "src/assets/certificates/agile/Advanced Agile Tools and Techniques.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Final Exam: Agile Foundations",
+    path: "src/assets/certificates/agile/Final Exam_ Agile Foundations.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+
+  // Others
+  {
+    name: "Using Business Etiquette to Increase Your Professionalism",
+    path: "src/assets/certificates/others/Using Business Etiquette to Increase Your Professionalism.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Global Compliance",
+    path: "src/assets/certificates/others/Global Compliance.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Creating A Safe Work Environment",
+    path: "src/assets/certificates/others/Creating A Safe Work Environment.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "OS Processes and Threads",
+    path: "src/assets/certificates/others/OS Processes and Threads.pdf",
+    type: "pdf",
+    issuingAuthority: "LinkedIn Learning",
+    year: "2024"
+  },
+  {
+    name: "Problem Solving Basic",
+    path: "src/assets/certificates/others/problem_solving_basic.png",
+    type: "image",
+    issuingAuthority: "HackerRank",
+    year: "2024",
+    link: "https://www.hackerrank.com/certificates/your-certificate-id"
+  }
 ];

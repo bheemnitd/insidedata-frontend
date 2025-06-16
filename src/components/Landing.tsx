@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+
+interface LandingProps {
+  onExploreClick: () => void;
+}
 
 const START_DATE = new Date('2018-06-01');
 
@@ -59,7 +62,7 @@ const Description = styled.div`
   backdrop-filter: blur(5px);
 `;
 
-const EnterButton = styled(Link)`
+const EnterButton = styled.button`
   padding: 1rem 3rem;
   background: #00fff7;
   color: #111;
@@ -69,6 +72,8 @@ const EnterButton = styled(Link)`
   font-size: 1.2rem;
   box-shadow: 0 0 15px #00fff7aa;
   transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
   &:hover {
     background: #00d4c7;
     transform: translateY(-2px);
@@ -87,7 +92,7 @@ const ExperienceBadge = styled.div`
   display: inline-block;
 `;
 
-const Landing: React.FC = () => {
+const Landing: React.FC<LandingProps> = ({ onExploreClick }) => {
   const { years, months } = calculateExperience();
   const [name, setName] = useState<string>('Loading...');
   const [intro, setIntro] = useState<string>('Loading...');
@@ -126,7 +131,7 @@ const Landing: React.FC = () => {
           Overall {years} {years === 1 ? 'year' : 'years'} and {months} {months === 1 ? 'month' : 'months'} of experience
         </ExperienceBadge>
         <Description>{intro}</Description>
-        <EnterButton to="/portfolio">Explore More</EnterButton>
+        <EnterButton onClick={onExploreClick}>Explore More</EnterButton>
       </ContentWrapper>
     </Container>
   );

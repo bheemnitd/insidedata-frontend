@@ -6,6 +6,12 @@ interface Education {
   degree: string;
   college: string;
   year: string;
+  url: string;
+  logo: string;
+}
+
+interface EducationsProps {
+  education: Education[];
 }
 
 // Styled Components
@@ -47,40 +53,103 @@ const ListItem = styled.li`
   }
 `;
 
-const Degree = styled.strong`
-  display: block;
-  font-size: 1.2rem;
-  color: #222;
-  margin-bottom: 0.5rem;
+const TabContent = styled.div`
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 `;
 
-const College = styled.p`
-  color: #555;
-  margin: 0.3rem 0;
+const EducationCard = styled.div`
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  border-left: 4px solid #00fff7;
+  background: #f8f9fa;
+  border-radius: 0 12px 12px 0;
+  transition: transform 0.2s ease;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
+  &:hover {
+    transform: translateX(10px);
+  }
+`;
+
+const LogoContainer = styled.div`
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
+const CollegeLogo = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+`;
+
+const ContentContainer = styled.div`
+  flex-grow: 1;
+`;
+
+const Degree = styled.h3`
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+`;
+
+const College = styled.a`
+  color: #00fff7;
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const Year = styled.p`
-  color: #777;
+  color: #666;
   font-size: 0.9rem;
-  margin: 0.3rem 0;
+  margin-bottom: 0.5rem;
 `;
 
-const EducationSection: React.FC = () => {
+const Educations: React.FC<EducationsProps> = ({ education }) => {
   return (
-    <Section>
-      <Title>Education</Title>
-      <Divider />
-      <List>
-        {/* {education.map((edu: Education, index: number) => (
-          <ListItem key={index}>
+    <TabContent>
+      <h2>Education</h2>
+      {education.map((edu, index) => (
+        <EducationCard key={index}>
+          <LogoContainer>
+            <CollegeLogo src={edu.logo} alt={`${edu.college} logo`} />
+          </LogoContainer>
+          <ContentContainer>
             <Degree>{edu.degree}</Degree>
-            <College>{edu.college}</College>
+            <College href={edu.url} target="_blank" rel="noopener noreferrer">
+              {edu.college}
+            </College>
             <Year>{edu.year}</Year>
-          </ListItem>
-        ))} */}
-      </List>
-    </Section>
+          </ContentContainer>
+        </EducationCard>
+      ))}
+    </TabContent>
   );
 };
 
-export default EducationSection;
+export default Educations;

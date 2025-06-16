@@ -1,14 +1,14 @@
 import React from 'react';
 import './About.css'; // Import your CSS file
-const azureFundamentals = require('../assets/certificates/azure_fundamentals.png');
+import azureFundamentals from '../assets/certificates/azure_fundamentals.png';
 // ...existing code...
-const pythonAdvance = require('../assets/certificates/python_advance.jpg');
-const javaIntermediate = require('../assets/certificates/java_intermediate.png');
-const problemSolvingBasic = require('../assets/certificates/problem_solving_basic.png');
-const sqlBasic = require('../assets/certificates/sql_basic.png');
-const pythonBasic = require('../assets/certificates/python_basic.png');
-const javaBasic = require('../assets/certificates/java_basic.png');
-const myImage = require('../assets/background.png');
+import pythonAdvance from '../assets/certificates/python_advance.jpg';
+import javaIntermediate from '../assets/certificates/java_intermediate.png';
+import problemSolvingBasic from '../assets/certificates/problem_solving_basic.png';
+import sqlBasic from '../assets/certificates/sql_basic.png';
+import pythonBasic from '../assets/certificates/python_basic.png';
+import javaBasic from '../assets/certificates/java_basic.png';
+import myImage from '../assets/background.png';
 // ...existing code...
 const Resume = () => {
 
