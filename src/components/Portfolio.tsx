@@ -31,14 +31,11 @@ const Navbar = styled.nav`
   z-index: 1000;
 `;
 
-const NavBrand = styled.a`
+const NavBrand = styled.a<{ active?: boolean }>`
   font-weight: 700;
   text-decoration: none;
   font-size: 1.5rem;
-  color: #999;
-  &:hover {
-    color:rgb(255, 255, 255);
-  }
+  color:rgb(255, 255, 255);
 `;
 
 const NavLink = styled.a<{ active?: boolean; disabled?: boolean }>`
@@ -174,17 +171,18 @@ function Portfolio() {
         <Container>
             <Navbar className="navbar navbar-expand-sm fixed-top">
                 <div className="container-fluid">
-                    <NavBrand href="#">{resumeData?.personalInfo?.name || 'BHEEM KUMAR'}</NavBrand>
+                    <NavBrand href="#" active={activeTab === 'about'} 
+                              onClick={() => handleTabClick('about')}>{resumeData?.personalInfo?.name || 'BHEEM KUMAR'}</NavBrand>
                     <div className="collapse navbar-collapse" id="collapsibleNavbar">
                         <ul className="navbar-nav">
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <NavLink 
                                     active={activeTab === 'about'} 
                                     onClick={() => handleTabClick('about')}
                                 >
                                     ABOUT
                                 </NavLink>
-                            </li>
+                            </li> */}
                             <li className="nav-item">
                                 <NavLink 
                                     active={activeTab === 'education'} 

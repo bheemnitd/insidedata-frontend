@@ -16,9 +16,9 @@ const TabContent = styled.div`
 `;
 
 const ProjectCard = styled.div`
-  border-left: 4px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid rgb(5, 250, 234);
   background: transparent;
-  border-radius: 10px;
+  // border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
   transition: all 0.3s ease;

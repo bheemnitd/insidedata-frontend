@@ -23,11 +23,9 @@ const ExperienceCard = styled.div`
   display: flex;
   gap: 2rem;
   align-items: center;
-
+  border-left-color: #64ffda;
   &:hover {
     transform: translateX(10px);
-    background: rgba(255, 255, 255, 0.05);
-    border-left-color: #64ffda;
   }
 `;
 

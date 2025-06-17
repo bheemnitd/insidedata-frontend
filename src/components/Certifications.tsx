@@ -10,9 +10,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/3
 const TabContent = styled.div`
   padding: 2rem;
   background: transparent;
-  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-
   h2 {
     color: white;
     margin-bottom: 2rem;
@@ -30,7 +28,7 @@ const TabContainer = styled.div`
 const TabButton = styled.button<{ active: boolean }>`
   background: transparent;
   border: none;
-  color: ${props => props.active ? '#64ffda' : 'white'};
+  color: #64ffda;
   padding: 0.5rem 1rem;
   margin: 0 0.5rem;
   cursor: pointer;
@@ -76,7 +74,7 @@ const CategoryTitle = styled.h3`
   margin-bottom: 1rem;
   font-size: 1.2rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #00fff7;
+  // border-bottom: 2px solid #00fff7;
 `;
 
 const CertificateList = styled.div`
@@ -86,27 +84,25 @@ const CertificateList = styled.div`
 `;
 
 const CertificateItem = styled.div`
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
+  // background: rgba(255, 255, 255, 0.05);
+  // border-radius: 8px;
   padding: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  border-left: 4px solid rgba(100, 255, 218, 0.1);
+  border-left: 4px solid #64ffda;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-    border-left-color: #64ffda;
+    transform: translateY(-5px);
   }
 `;
 
 const PreviewContainer = styled.div`
   width: 100%;
   height: 300px;
-  background: rgba(0, 0, 0, 0.2);
+  background: transparent;
   border-radius: 4px;
   overflow: hidden;
   display: flex;
@@ -265,15 +261,11 @@ const CloseButton = styled.button`
   right: 1rem;
   background: none;
   border: none;
-  color: white;
+  color:rgb(255, 0, 0);
   font-size: 1.5rem;
   cursor: pointer;
   padding: 0.5rem;
   z-index: 1;
-
-  &:hover {
-    color: #00fff7;
-  }
 `;
 
 interface Certificate {
@@ -415,10 +407,14 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
   const renderCertificateContent = (cert: Certificate) => {
     if (cert.type === 'image') {
       return (
-        <PreviewImage 
-          src={certificateImages[cert.path]} 
+        <PreviewImage
+          src={certificateImages[cert.path]}
           alt={cert.name}
-          style={{ maxWidth: '100%', maxHeight: '80vh' }}
+          style={{
+            maxWidth: '90%', // Limit the width to 90% of the modal
+            maxHeight: '80vh', // Limit the height to 80% of the viewport height
+            objectFit: 'contain', // Ensure the image scales proportionally
+          }}
           onClick={() => window.open(cert.link, '_blank')}
         />
       );
@@ -428,14 +424,14 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
         return <div style={{ color: 'white' }}>Loading PDF...</div>;
       }
       return (
-        <Document 
+        <Document
           file={pdfUrl}
           loading={<div style={{ color: 'white' }}>Loading PDF...</div>}
           error={<div style={{ color: 'white' }}>Error loading PDF!</div>}
         >
-          <Page 
-            pageNumber={1} 
-            width={1000}
+          <Page
+            pageNumber={1}
+            width={1000} // Set a fixed width for PDFs
             renderTextLayer={false}
             renderAnnotationLayer={false}
             scale={1.2}

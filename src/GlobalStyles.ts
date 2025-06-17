@@ -25,14 +25,11 @@ const GlobalStyles = createGlobalStyle`
   }
 
   /* Links */
-  a {
-    color: white;
-    text-decoration: none;
-    
-    &:hover {
-      color: #00fff7;
-    }
-  }
+  // a {
+  //   color: white;
+  //   text-decoration: none;
+  //   color: #00fff7;
+  // }
 
   /* Form elements */
   button {

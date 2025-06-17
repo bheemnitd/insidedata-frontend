@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TabContent = styled.div`
-  background: white;
+  background: transparent;
   border-radius: 8px;
   padding: 2rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -15,7 +15,7 @@ const ContactGrid = styled.div`
 `;
 
 const ContactCard = styled.div`
-  background: #f8f9fa;
+  background:transparent;
   padding: 1.5rem;
   border-radius: 8px;
   border: 1px solid #eee;
@@ -27,6 +27,8 @@ const CardTitle = styled.h3`
   font-size: 1.2rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid #64ffda;
+  color:white;
+
 `;
 
 const ContactLink = styled.a`
