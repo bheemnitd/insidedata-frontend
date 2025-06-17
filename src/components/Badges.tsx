@@ -54,13 +54,30 @@ const CategoryButton = styled.button<{ active: boolean }>`
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
-  background: ${props => props.active ? '#64ffda' : 'rgba(255, 255, 255, 0.1)'};
+  background: ${props => props.active ? '#64ffda' : 'rgba(100, 255, 218, 0.1)'};
   color: ${props => props.active ? '#000' : '#fff'};
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
 
   &:hover {
-    background: ${props => props.active ? '#64ffda' : 'rgba(255, 255, 255, 0.2)'};
+    background: ${props => props.active ? '#64ffda' : 'rgba(100, 255, 218, 0.2)'};
+    color: ${props => props.active ? '#000' : '#64ffda'};
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: ${props => props.active ? '#64ffda' : 'transparent'};
+    transition: all 0.3s ease;
+  }
+
+  &:hover::after {
+    background: #64ffda;
   }
 `;
 

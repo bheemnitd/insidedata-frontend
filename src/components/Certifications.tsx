@@ -4,14 +4,19 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 
-// Set up PDF.js worker
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+// Set up PDF.js worker with specific version and cMaps
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js`;
 
 const TabContent = styled.div`
+  padding: 2rem;
   background: transparent;
   border-radius: 8px;
-  padding: 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+  h2 {
+    color: white;
+    margin-bottom: 2rem;
+  }
 `;
 
 const TabContainer = styled.div`
@@ -22,19 +27,34 @@ const TabContainer = styled.div`
   padding: 0 1rem;
 `;
 
-const Tab = styled.button<{ active: boolean }>`
-  padding: 0.75rem 1.5rem;
-  background: ${props => props.active ? '#00fff7' : 'rgba(255, 255, 255, 0.05)'};
-  color: ${props => props.active ? '#111' : '#fff'};
+const TabButton = styled.button<{ active: boolean }>`
+  background: transparent;
   border: none;
-  border-radius: 8px;
+  color: ${props => props.active ? '#64ffda' : 'white'};
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
   cursor: pointer;
-  font-weight: ${props => props.active ? '600' : '400'};
+  font-size: 1rem;
   transition: all 0.3s ease;
+  position: relative;
 
   &:hover {
-    background: ${props => props.active ? '#00fff7' : 'rgba(255, 255, 255, 0.1)'};
-    transform: translateY(-2px);
+    color: #64ffda;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: ${props => props.active ? '#64ffda' : 'transparent'};
+    transition: all 0.3s ease;
+  }
+
+  &:hover::after {
+    background: #64ffda;
   }
 `;
 
@@ -74,10 +94,12 @@ const CertificateItem = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border-left: 4px solid rgba(100, 255, 218, 0.1);
 
   &:hover {
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
+    border-left-color: #64ffda;
   }
 `;
 
@@ -105,7 +127,7 @@ const PDFPreview = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.2);
+  background: #f5f5f5;
   padding: 0;
 
   .react-pdf__Document {
@@ -114,16 +136,43 @@ const PDFPreview = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #f5f5f5;
   }
 
   .react-pdf__Page {
     margin: 0;
     padding: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    background: white;
+    position: relative;
   }
 
   .react-pdf__Page canvas {
     max-width: 100%;
     height: auto !important;
+  }
+
+  .react-pdf__Page__textContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    opacity: 0.2;
+    line-height: 1.0;
+  }
+
+  .react-pdf__Page__textContent span {
+    color: transparent;
+    position: absolute;
+    white-space: pre;
+    cursor: text;
+    transform-origin: 0% 0%;
+  }
+
+  .react-pdf__Page__annotations {
+    display: none;
   }
 `;
 
@@ -133,7 +182,7 @@ const CertificateDetails = styled.div`
 
 const CertificateName = styled.h4`
   margin: 0 0 0.5rem 0;
-  color: #00fff7;
+  color: #64ffda;
 `;
 
 const CertificateInfo = styled.p`
@@ -143,13 +192,16 @@ const CertificateInfo = styled.p`
 `;
 
 const VerifyLink = styled.a`
-  color: #00fff7;
+  color: #64ffda;
   text-decoration: none;
   font-size: 0.9rem;
-  display: inline-block;
-  margin-top: 0.5rem;
-  
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+
   &:hover {
+    color: #4cd8b2;
     text-decoration: underline;
   }
 `;
@@ -169,13 +221,42 @@ const Modal = styled.div`
 `;
 
 const ModalContent = styled.div`
-  background: #1a1a1a;
+  background: #f5f5f5;
   padding: 2rem;
   border-radius: 8px;
   max-width: 90%;
   max-height: 90vh;
   overflow: auto;
   position: relative;
+
+  .react-pdf__Document {
+    background: #f5f5f5;
+  }
+
+  .react-pdf__Page {
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    position: relative;
+  }
+
+  .react-pdf__Page__textContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    opacity: 0.2;
+    line-height: 1.0;
+  }
+
+  .react-pdf__Page__textContent span {
+    color: transparent;
+    position: absolute;
+    white-space: pre;
+    cursor: text;
+    transform-origin: 0% 0%;
+  }
 `;
 
 const CloseButton = styled.button`
@@ -220,7 +301,7 @@ const categoryNames: { [key: string]: string } = {
 };
 
 const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
-  const [selectedTab, setSelectedTab] = useState<string>('language');
+  const [selectedTab, setSelectedTab] = useState<string>('ai');
   const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
   const [certificateImages, setCertificateImages] = useState<{ [key: string]: string }>({});
   const [certificatePdfs, setCertificatePdfs] = useState<{ [key: string]: string }>({});
@@ -246,7 +327,7 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
         .filter(cert => cert.type === 'image')
         .map(async (cert) => {
           try {
-            // Use public assets path
+            // For images, use the public path
             const imagePath = cert.path.replace('src/assets/', '/assets/');
             return { [cert.path]: imagePath };
           } catch (error) {
@@ -259,9 +340,11 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
         .filter(cert => cert.type === 'pdf')
         .map(async (cert) => {
           try {
-            // Use public assets path
+            // For PDFs, use the public path
             const pdfPath = cert.path.replace('src/assets/', '/assets/');
-            return { [cert.path]: pdfPath };
+            // Add a cache-busting query parameter
+            const pdfUrl = `${pdfPath}?t=${Date.now()}`;
+            return { [cert.path]: pdfUrl };
           } catch (error) {
             console.error(`Error loading PDF for ${cert.name}:`, error);
             return { [cert.path]: '' };
@@ -302,11 +385,25 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
         </PreviewContainer>
       );
     } else if (cert.type === 'pdf') {
+      const pdfUrl = certificatePdfs[cert.path];
+      if (!pdfUrl) {
+        return <div style={{ color: 'white' }}>Loading PDF...</div>;
+      }
       return (
         <PreviewContainer>
           <PDFPreview>
-            <Document file={certificatePdfs[cert.path]}>
-              <Page pageNumber={1} width={280} />
+            <Document 
+              file={pdfUrl}
+              loading={<div style={{ color: 'white' }}>Loading PDF...</div>}
+              error={<div style={{ color: 'white' }}>Error loading PDF!</div>}
+            >
+              <Page 
+                pageNumber={1} 
+                width={280}
+                renderTextLayer={false}
+                renderAnnotationLayer={false}
+                scale={1.2}
+              />
             </Document>
           </PDFPreview>
         </PreviewContainer>
@@ -326,9 +423,23 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
         />
       );
     } else if (cert.type === 'pdf') {
+      const pdfUrl = certificatePdfs[cert.path];
+      if (!pdfUrl) {
+        return <div style={{ color: 'white' }}>Loading PDF...</div>;
+      }
       return (
-        <Document file={certificatePdfs[cert.path]}>
-          <Page pageNumber={1} width={1000} />
+        <Document 
+          file={pdfUrl}
+          loading={<div style={{ color: 'white' }}>Loading PDF...</div>}
+          error={<div style={{ color: 'white' }}>Error loading PDF!</div>}
+        >
+          <Page 
+            pageNumber={1} 
+            width={1000}
+            renderTextLayer={false}
+            renderAnnotationLayer={false}
+            scale={1.2}
+          />
         </Document>
       );
     }
@@ -337,16 +448,16 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
 
   return (
     <TabContent>
-      <h2 style={{ padding: '0 2rem' }}>Certifications</h2>
+      <h2>Certifications</h2>
       <TabContainer>
         {Object.entries(categoryNames).map(([key, name]) => (
-          <Tab
+          <TabButton
             key={key}
             active={selectedTab === key}
             onClick={() => setSelectedTab(key)}
           >
             {name}
-          </Tab>
+          </TabButton>
         ))}
       </TabContainer>
 

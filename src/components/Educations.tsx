@@ -68,7 +68,7 @@ const TabContent = styled.div`
 const EducationCard = styled.div`
   margin-bottom: 2.5rem;
   padding: 2rem;
-  border-left: 4px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid rgba(100, 255, 218, 0.1);
   border-radius: 0 12px 12px 0;
   transition: transform 0.2s ease;
   display: flex;
@@ -78,6 +78,7 @@ const EducationCard = styled.div`
   &:hover {
     transform: translateX(10px);
     background: rgba(255, 255, 255, 0.05);
+    border-left-color: #64ffda;
   }
 `;
 
@@ -118,7 +119,7 @@ const Degree = styled.h3`
 `;
 
 const College = styled.a`
-  color:rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
   text-decoration: none;
   font-weight: 500;
   display: block;
@@ -126,6 +127,7 @@ const College = styled.a`
   font-size: 1.1rem;
 
   &:hover {
+    color: #64ffda;
     text-decoration: underline;
   }
 `;

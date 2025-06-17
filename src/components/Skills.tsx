@@ -27,8 +27,13 @@ const SkillsGrid = styled.div`
 const SkillCategory = styled.div`
   background: transparent;
   padding: 1.5rem;
-  // border-radius: 8px;
-  border-left: 4px solid #eee;
+  border-left: 4px solid rgba(100, 255, 218, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-left-color: #64ffda;
+    background: rgba(255, 255, 255, 0.05);
+  }
 `;
 
 const CategoryTitle = styled.h3`
@@ -36,7 +41,7 @@ const CategoryTitle = styled.h3`
   margin-bottom: 1rem;
   font-size: 1.2rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #00fff7;
+  border-bottom: 2px solid #64ffda;
 `;
 
 const SkillList = styled.ul`

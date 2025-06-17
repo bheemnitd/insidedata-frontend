@@ -16,7 +16,7 @@ const TabContent = styled.div`
 const ExperienceCard = styled.div`
   margin-bottom: 2.5rem;
   padding: 2rem;
-  border-left: 4px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid rgba(100, 255, 218, 0.1);
   background: transparent;
   border-radius: 0 12px 12px 0;
   transition: transform 0.2s ease;
@@ -27,6 +27,7 @@ const ExperienceCard = styled.div`
   &:hover {
     transform: translateX(10px);
     background: rgba(255, 255, 255, 0.05);
+    border-left-color: #64ffda;
   }
 `;
 
@@ -74,7 +75,7 @@ const Company = styled.a`
   margin-bottom: 0.5rem;
 
   &:hover {
-    color: #00fff7;
+    color: #64ffda;
     text-decoration: underline;
   }
 `;

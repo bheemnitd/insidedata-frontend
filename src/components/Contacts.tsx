@@ -26,18 +26,18 @@ const CardTitle = styled.h3`
   margin-bottom: 1rem;
   font-size: 1.2rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #00fff7;
+  border-bottom: 2px solid #64ffda;
 `;
 
 const ContactLink = styled.a`
-  color: #00fff7;
+  color: #64ffda;
   text-decoration: none;
   display: block;
   margin-bottom: 0.5rem;
   transition: color 0.2s ease;
 
   &:hover {
-    color: #00d4c7;
+    color: #4cd8b2;
     text-decoration: underline;
   }
 `;
