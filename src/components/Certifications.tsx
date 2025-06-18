@@ -101,7 +101,7 @@ const CertificateItem = styled.div`
 
 const PreviewContainer = styled.div`
   width: 100%;
-  height: 300px;
+  height: 400px;
   background: transparent;
   border-radius: 4px;
   overflow: hidden;
@@ -295,6 +295,13 @@ const DownloadButton = styled.a`
   }
 `;
 
+const ModalImage = styled.img`
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  cursor: pointer;
+`;
+
 interface Certificate {
   name: string;
   path: string;
@@ -451,7 +458,7 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
             >
               <Page 
                 pageNumber={1} 
-                width={280}
+                width={350}
                 renderTextLayer={false}
                 renderAnnotationLayer={false}
                 scale={1.0}
@@ -480,14 +487,9 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
   const renderCertificateContent = (cert: Certificate) => {
     if (cert.type === 'image') {
       return (
-        <PreviewImage
+        <ModalImage
           src={certificateImages[cert.path]}
           alt={cert.name}
-          style={{
-            maxWidth: '90%',
-            maxHeight: '80vh',
-            objectFit: 'contain',
-          }}
           onClick={() => window.open(cert.link, '_blank')}
         />
       );
