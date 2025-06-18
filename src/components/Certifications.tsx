@@ -4,8 +4,8 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 
-// Set up PDF.js worker with specific version and cMaps
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js`;
+// Set up PDF.js worker
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const TabContent = styled.div`
   padding: 2rem;
@@ -268,6 +268,33 @@ const CloseButton = styled.button`
   z-index: 1;
 `;
 
+const PDFFallback = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  gap: 1rem;
+`;
+
+const DownloadButton = styled.a`
+  background: #64ffda;
+  color: #0a192f;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #4cd8b2;
+    transform: translateY(-2px);
+  }
+`;
+
 interface Certificate {
   name: string;
   path: string;
@@ -315,6 +342,8 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
 
   useEffect(() => {
     const loadAssets = async () => {
+      console.log('Loading assets for certifications:', certifications.length);
+      
       const imagePromises = certifications
         .filter(cert => cert.type === 'image')
         .map(async (cert) => {
@@ -332,10 +361,26 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
         .filter(cert => cert.type === 'pdf')
         .map(async (cert) => {
           try {
-            // For PDFs, use the public path
+            // For PDFs, use the public path and encode spaces
             const pdfPath = cert.path.replace('src/assets/', '/assets/');
-            // Add a cache-busting query parameter
-            const pdfUrl = `${pdfPath}?t=${Date.now()}`;
+            // Encode the URL to handle spaces and special characters
+            const encodedPath = encodeURI(pdfPath);
+            // Remove cache-busting as it might cause issues
+            const pdfUrl = encodedPath;
+            console.log(`Loading PDF: ${pdfUrl} for ${cert.name}`); // Debug log
+            
+            // Test if the PDF is accessible
+            try {
+              const response = await fetch(pdfUrl, { method: 'HEAD' });
+              if (!response.ok) {
+                console.warn(`PDF not accessible: ${pdfUrl} (${response.status})`);
+              } else {
+                console.log(`PDF accessible: ${pdfUrl}`);
+              }
+            } catch (fetchError) {
+              console.warn(`Error checking PDF accessibility: ${pdfUrl}`, fetchError);
+            }
+            
             return { [cert.path]: pdfUrl };
           } catch (error) {
             console.error(`Error loading PDF for ${cert.name}:`, error);
@@ -350,6 +395,9 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
 
       const images = imageResults.reduce((acc, curr) => ({ ...acc, ...curr }), {});
       const pdfs = pdfResults.reduce((acc, curr) => ({ ...acc, ...curr }), {});
+
+      console.log('Loaded images:', Object.keys(images).length);
+      console.log('Loaded PDFs:', Object.keys(pdfs).length);
 
       setCertificateImages(images);
       setCertificatePdfs(pdfs);
@@ -379,22 +427,47 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
     } else if (cert.type === 'pdf') {
       const pdfUrl = certificatePdfs[cert.path];
       if (!pdfUrl) {
-        return <div style={{ color: 'white' }}>Loading PDF...</div>;
+        return <div style={{ color: 'white', textAlign: 'center', padding: '2rem' }}>Loading PDF...</div>;
       }
       return (
         <PreviewContainer>
           <PDFPreview>
             <Document 
               file={pdfUrl}
-              loading={<div style={{ color: 'white' }}>Loading PDF...</div>}
-              error={<div style={{ color: 'white' }}>Error loading PDF!</div>}
+              loading={<div style={{ color: 'white', textAlign: 'center', padding: '2rem' }}>Loading PDF...</div>}
+              error={
+                <PDFFallback>
+                  <div>Unable to preview PDF</div>
+                  <DownloadButton href={pdfUrl} target="_blank" rel="noopener noreferrer">
+                    Download PDF
+                  </DownloadButton>
+                </PDFFallback>
+              }
+              onLoadSuccess={() => console.log(`PDF loaded successfully: ${cert.name}`)}
+              onLoadError={(error) => {
+                console.error(`PDF load error for ${cert.name}:`, error);
+                console.error(`PDF URL: ${pdfUrl}`);
+              }}
             >
               <Page 
                 pageNumber={1} 
                 width={280}
                 renderTextLayer={false}
                 renderAnnotationLayer={false}
-                scale={1.2}
+                scale={1.0}
+                onLoadSuccess={() => console.log(`PDF page loaded successfully: ${cert.name}`)}
+                onLoadError={(error) => {
+                  console.error(`PDF page load error for ${cert.name}:`, error);
+                  // If page fails to load, show download option
+                  return (
+                    <PDFFallback>
+                      <div>Unable to preview PDF page</div>
+                      <DownloadButton href={pdfUrl} target="_blank" rel="noopener noreferrer">
+                        Download PDF
+                      </DownloadButton>
+                    </PDFFallback>
+                  );
+                }}
               />
             </Document>
           </PDFPreview>
@@ -411,9 +484,9 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
           src={certificateImages[cert.path]}
           alt={cert.name}
           style={{
-            maxWidth: '90%', // Limit the width to 90% of the modal
-            maxHeight: '80vh', // Limit the height to 80% of the viewport height
-            objectFit: 'contain', // Ensure the image scales proportionally
+            maxWidth: '90%',
+            maxHeight: '80vh',
+            objectFit: 'contain',
           }}
           onClick={() => window.open(cert.link, '_blank')}
         />
@@ -421,20 +494,34 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
     } else if (cert.type === 'pdf') {
       const pdfUrl = certificatePdfs[cert.path];
       if (!pdfUrl) {
-        return <div style={{ color: 'white' }}>Loading PDF...</div>;
+        return <div style={{ color: 'white', textAlign: 'center', padding: '2rem' }}>Loading PDF...</div>;
       }
       return (
         <Document
           file={pdfUrl}
-          loading={<div style={{ color: 'white' }}>Loading PDF...</div>}
-          error={<div style={{ color: 'white' }}>Error loading PDF!</div>}
+          loading={<div style={{ color: 'white', textAlign: 'center', padding: '2rem' }}>Loading PDF...</div>}
+          error={
+            <PDFFallback>
+              <div>Unable to preview PDF</div>
+              <DownloadButton href={pdfUrl} target="_blank" rel="noopener noreferrer">
+                Download PDF
+              </DownloadButton>
+            </PDFFallback>
+          }
+          onLoadSuccess={() => console.log(`PDF loaded successfully in modal: ${cert.name}`)}
+          onLoadError={(error) => {
+            console.error(`PDF load error in modal for ${cert.name}:`, error);
+            console.error(`PDF URL: ${pdfUrl}`);
+          }}
         >
           <Page
             pageNumber={1}
-            width={1000} // Set a fixed width for PDFs
+            width={1000}
             renderTextLayer={false}
             renderAnnotationLayer={false}
-            scale={1.2}
+            scale={1.0}
+            onLoadSuccess={() => console.log(`PDF page loaded successfully in modal: ${cert.name}`)}
+            onLoadError={(error) => console.error(`PDF page load error in modal for ${cert.name}:`, error)}
           />
         </Document>
       );

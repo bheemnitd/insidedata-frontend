@@ -155,6 +155,7 @@ export interface ResumeData {
   customSections: CustomSection[];
   preferences: Preferences;
   metadata: Metadata;
+  [key: string]: any;
 }
 
 export interface ResumeDocument {

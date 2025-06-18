@@ -134,80 +134,100 @@
         ],
         "projects": [
           {
-            "name": "Beagle",
-            "company": "Decisionpoint.ai",
+            "name": "Denali Customer Support",
+            "company": "Coforge",
+            "Client": "Trinet",
             "description": "Beagle is an AI-powered platform that helps businesses automate their decision-making processes. It uses natural language processing and machine learning to analyze business rules and create automated workflows.",
-            "tools": ["React", "TypeScript", "Node.js", "MongoDB", "AWS", "Docker"],
-            "started": "2023",
-            "ended": "Present",
+            "tools": "Python | Django | Django RestFramework",
+            "started": "Jun 2024",
+            "ended": "Jul 2025",
             "url": "https://decisionpoint.ai/beagle/",
-            "logo": "/assets/BeagleGPT-logo.png"
+            "logo": "",
+            "alt" :"Denali Customer Support"
+          },
+          {
+            "name": "Beagle",
+            "company": "Decisionpoint",
+            "client": "",
+            "description": "Beagle is an AI-powered platform that helps businesses automate their decision-making processes. It uses natural language processing and machine learning to analyze business rules and create automated workflows.",
+            "tools": "Python | Django | Django RestFramework | Docker | OpenAPI",
+            "started": "Nov 2023",
+            "ended": "Jan 2024",
+            "url": "https://decisionpoint.ai/beagle/",
+            "logo": "/assets/BeagleGPT-logo.png",
+            "alt": "Beagle"
           },
           {
             "name": "Kelloggs Command Center",
-            "company": "decisionpoint.ai",
+            "company": "Dcisionpoint",
+            "client": "Kelloggs",
             "description": "For Command Center, I efficiently retrieved data from Glu using AWS API, workflow scheduler etc.",
-            "tools": "Python | Django | OpenAPI | AWS Glue, Athena, S3, Azure Databricks, Pipeline, Blob",
-            "started": "2023",
-            "ended": "2022",
+            "tools": "Python | Django | OpenAPI | AWS Glue | Athena | S3",
+            "started": "Oct 2022",
+            "ended": "Nov 2023",
             "url": "https://decisionpoint.ai/",
             "logo":"",
-            "alt":"NA" 
+            "alt":"Kelloggs Command Center" 
           },
           {
             "name": "Kelloggs Target Builder",
-            "company": "decisionpoint",
+            "company": "Decisionpoint",
+            "client": "Kelloggs",
             "description": "In Project Target Builder, I spearheaded API development utilizing core Python on Lambda functions.",
-            "tools": "Python | AWS Lambda, Athena, S3",
-            "started": "2022",
-            "ended": "2021",
+            "tools": "Python | AWS Lambda | AWS | Athena | S3",
+            "started": "Nov 2021",
+            "ended": "Oct 2022",
             "url": "https://decisionpoint.ai/",
             "logo":"",
-            "alt":"NA" 
+            "alt":"Kelloggs Target Builder" 
           },
           {
             "name": "ERP Patashala",
-            "company": "Varadhismartek",
+            "company": "VaradhiSmartek",
+            "client": "",
             "description": "At Varadhi Smartek, I led the API development for ERP Patashala. This user-friendly software streamlines communication between parents, teachers, and management. It enhances institutional efficiency, saving time and resources. The intuitive interface ensures easy navigation, contributing to overall growth by optimizing time management.",
             "tools": "Python | Django | DRF | AWS S3",
-            "started": "2021",
-            "ended": "2021",
+            "started": "Jun 2021",
+            "ended": "Nov 2021",
             "url": "https://varadhismartek.com/",
             "logo":"",
-            "alt": "NA"
+            "alt": "ERP Patashala"
           },
           {
             "name": "Python Tutorial",
-            "company": "hudsondata",
+            "company": "Hudsondata",
+            "client": "Hudsondata",
             "description": "My role involved curating and developing comprehensive Python tutorial content organized by topics. This initiative aimed to facilitate a structured learning experience for new team members, enabling them to acquire proficiency in Python efficiently.",
             "tools": "Python",
-            "started": "2019",
-            "ended": "2020",
+            "started": "Aug 2019",
+            "ended": "Jan 2020",
             "url": "https://hudsondata.com/",
             "logo":"",
-            "alt":"NA"            
+            "alt":"Python Tutorial"            
           },
           {
             "name": "Environmental Sound classification",
-            "company": "self practice as skill development",
+            "company": "Self practice as skill development",
+            "client": "",
             "description": "A model which is used to identify the class of sound, it takes 5 secs of audio file and predicts the class. Where we had 2000 audio clips. We converted it into spectrograms and then trained it. The accuracy of the model is 97%.",
             "tools": "Python | pandas | keras",
-            "started": "2018",
-            "ended": "2018",
+            "started": "Jun 2018",
+            "ended": "Aug 2019",
             "url": "https://github.com/bheemnitd/Environmental-Sound-Classification",
             "logo":"https://raw.githubusercontent.com/bheemnitd/Environmental-Sound-Classification/refs/heads/master/images/Selection_009.png",
-            "alt":"NA" 
+            "alt":"Environmental Sound classification" 
           },
           {
             "name": "Community Detection",
             "company": "College project",
+            "client": "",
             "description": "Community detection in social networks, the field of community detection aims to identify highly connected groups of individuals or objects inside networks, these groups are called communities. The community can be detected by seed nodes and dense between nodes.",
             "tools": "Python | networkx",
-            "started": "2018",
-            "ended": "2018",
+            "started": "Jan 2018",
+            "ended": "May 2018",
             "url": "https://github.com/bheemnitd/Community-Detection-Based-On-Seed-Node",
             "logo":"https://raw.githubusercontent.com/bheemnitd/Community-Detection-Based-On-Seed-Node/refs/heads/master/images/community_detection.jpg",
-            "alt":"NA" 
+            "alt":"Community Detection" 
           }
         ],
         "certifications": [
@@ -511,6 +531,37 @@
             "type": "pdf",
             "issuingAuthority": "LinkedIn Learning",
             "year": "2024"
+          }
+        ],
+        "contacts": [
+          {
+            "type": "email",
+            "value": "bheemnitd@gmail.com",
+            "link": "mailto:bheemnitd@gmail.com",
+            "icon": "email"
+          },
+          {
+            "type": "phone",
+            "value": "+91 (956) 4916773",
+            "icon": "phone"
+          },
+          {
+            "type": "location",
+            "value": "Hyderabad, India",
+            "link": "https://www.google.com/maps?q=Coforge,+Greenland+Colony,+Madhava+Reddy+Colony,+Gachibowli,+Hyderabad,+Telangana+500032,+India",
+            "icon": "location"
+          },
+          {
+            "type": "linkedin",
+            "value": "LinkedIn",
+            "link": "https://www.linkedin.com/in/bheem-kumar-1b294113a",
+            "icon": "linkedin"
+          },
+          {
+            "type": "github",
+            "value": "GitHub",
+            "link": "https://github.com/bheemnitd",
+            "icon": "github"
           }
         ]
       }

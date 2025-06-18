@@ -111,18 +111,37 @@ const Tools = styled.div`
   margin-top: 10px;
 `;
 
+const AltTextContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  color: #333;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 8px;
+`;
+
 const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   return (
     <TabContent>
-          <h2>Skills & Technologies</h2>
+      <h2>Skills & Technologies</h2>
 
       {projects.map((project, index) => (
         <ProjectCard key={index}>
-          {project.logo && (
-            <LogoContainer>
+          <LogoContainer>
+            {project.logo ? (
               <ProjectLogo src={project.logo} alt={`${project.name} logo`} />
-            </LogoContainer>
-          )}
+            ) : (
+              <AltTextContainer>
+                {project.alt || project.name}
+              </AltTextContainer>
+            )}
+          </LogoContainer>
           <ContentContainer>
             <Title>
               {project.url ? (

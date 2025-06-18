@@ -17,7 +17,7 @@ const Container = styled.div`
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 2rem;
   z-index: 1;
-  filter: grayscale(100%); /* Apply black-and-white filter to the background image */
+  // filter: grayscale(100%); /* Apply black-and-white filter to the background image */
 `;
 
 const ContentWrapper = styled.div`
@@ -31,7 +31,7 @@ const Title = styled.h1`
   font-size: 3.5rem;
   font-weight: 900;
   margin-bottom: 1.5rem;
-  background: linear-gradient(45deg,rgb(0, 0, 0),rgb(255, 255, 255));
+  background: linear-gradient(45deg,rgb(0, 255, 255),rgb(255, 0, 191));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
@@ -42,7 +42,7 @@ const Button = styled.button`
   font-size: 1.2rem;
   font-weight: bold;
   color: #111;
-  background: linear-gradient(45deg,rgb(255, 255, 255),rgb(255, 0, 162));
+  background: linear-gradient(45deg,rgb(0, 221, 255),rgb(255, 0, 162));
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -50,7 +50,7 @@ const Button = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-  background: linear-gradient(45deg,rgb(255, 0, 191),rgb(255, 255, 255));
+  background: linear-gradient(45deg,rgb(255, 0, 191),rgb(255, 0, 162));
     box-shadow: 0 0 15pxrgb(0, 255, 247);
   }
 `;

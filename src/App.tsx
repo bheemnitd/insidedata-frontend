@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import GlobalStyles from './GlobalStyles';
 import Landing from './components/Landing';
 import Portfolio from './components/Portfolio';
 import Background from './components/Background';
+import ResumeBuilder from './components/ResumeBuilder';
 import './App.css';
 
 function App() {
@@ -18,11 +19,10 @@ function App() {
       <GlobalStyles />
       <Background />
       <Router>
-        {showPortfolio ? (
-          <Portfolio />
-        ) : (
-          <Landing onExploreClick={handleExploreClick} />
-        )}
+        <Routes>
+          <Route path="/" element={showPortfolio ? <Portfolio /> : <Landing onExploreClick={handleExploreClick} />} />
+          <Route path="/edit" element={<ResumeBuilder />} />
+        </Routes>
       </Router>
     </>
   );

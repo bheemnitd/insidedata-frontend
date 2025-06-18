@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ResumeData, Experience, Education, Skill, Project, Certificate } from '../types/resume';
 import { resumeService } from '../services/resumeService';
-import { FaFilePdf, FaImage, FaFolder, FaFolderOpen } from 'react-icons/fa';
+import { FaFilePdf, FaImage, FaFolder, FaFolderOpen, FaPlus, FaTrash, FaSave, FaArrowLeft } from 'react-icons/fa';
 // import { FaFolder } from 'react-icons/fa';
 const Container = styled.div`
   max-width: 1200px;
@@ -150,23 +150,43 @@ const RemoveButton = styled(Button)`
   }
 `;
 
-const ActionButton = styled(Button)`
-  margin-right: 1rem;
-  padding: 0.875rem 1.75rem;
-  
-  &.delete {
-    background: #f56565;
+const ActionButton = styled.button`
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  font-weight: 500;
+
+  &.primary {
+    background: #64ffda;
+    color: #000;
+    
     &:hover {
-      background: #e53e3e;
-      box-shadow: 0 4px 12px rgba(245, 101, 101, 0.3);
+      background: #4cd8b2;
     }
   }
-  
-  &.edit {
-    background: #4299e1;
+
+  &.secondary {
+    background: transparent;
+    color: #64ffda;
+    border: 1px solid #64ffda;
+    
     &:hover {
-      background: #3182ce;
-      box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
+      background: #64ffda;
+      color: #000;
+    }
+  }
+
+  &.danger {
+    background: #ff4757;
+    color: white;
+    
+    &:hover {
+      background: #ff3742;
     }
   }
 `;
@@ -382,6 +402,32 @@ const PreviewButton = styled.button`
   }
 `;
 
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+`;
+
+const HeaderTitle = styled.h1`
+  color: white;
+  margin: 0;
+`;
+
+const SuccessMessage = styled.div`
+  background: #2ed573;
+  color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
 interface ResumeDocument {
   _id: string;
   username: string;
@@ -390,11 +436,35 @@ interface ResumeDocument {
 }
 
 const ResumeBuilder: React.FC = () => {
+  const navigate = useNavigate();
   const [resumeDocument, setResumeDocument] = useState<ResumeDocument>(resumeService.getEmptyResume());
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [currentFolder, setCurrentFolder] = useState<string>('');
   const [isDragging, setIsDragging] = useState(false);
+
+  // Load data from resume.json
+  useEffect(() => {
+    const loadResumeData = async () => {
+      try {
+        const response = await fetch('/data/resume.json');
+        const data = await response.json();
+        setResumeDocument({
+          _id: 'resume',
+          username: '',
+          password: '',
+          data: data
+        });
+      } catch (error) {
+        console.error('Error loading resume data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadResumeData();
+  }, []);
 
   // Handle file input change for loading resume
   const handleFileLoad = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -403,11 +473,9 @@ const ResumeBuilder: React.FC = () => {
 
     try {
       setLoading(true);
-      setError(null);
       const data = await resumeService.loadResume(file);
       setResumeDocument(data);
     } catch (err) {
-      setError('Failed to load resume file. Please make sure it\'s a valid JSON file.');
       console.error('Error loading resume:', err);
     } finally {
       setLoading(false);
@@ -416,15 +484,15 @@ const ResumeBuilder: React.FC = () => {
 
   // Handle save button click
   const handleSave = async () => {
+    setSaving(true);
     try {
-      setLoading(true);
-      setError(null);
       await resumeService.saveResume(resumeDocument);
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 3000);
     } catch (err) {
-      setError('Failed to save resume. Please try again.');
       console.error('Error saving resume:', err);
     } finally {
-      setLoading(false);
+      setSaving(false);
     }
   };
 
@@ -653,45 +721,92 @@ const ResumeBuilder: React.FC = () => {
     );
   };
 
+  // Update specific section
+  const updateSection = (section: string, data: any) => {
+    setResumeDocument(prev => ({
+      ...prev,
+      data: {
+        ...prev.data,
+        [section]: data
+      }
+    }));
+  };
+
+  // Update specific item in array
+  const updateArrayItem = (section: string, index: number, data: any) => {
+    setResumeDocument(prev => ({
+      ...prev,
+      data: {
+        ...prev.data,
+        [section]: prev.data[section].map((item: any, i: number) => 
+          i === index ? { ...item, ...data } : item
+        )
+      }
+    }));
+  };
+
+  // Add new item to array
+  const addArrayItem = (section: string, newItem: any) => {
+    setResumeDocument(prev => ({
+      ...prev,
+      data: {
+        ...prev.data,
+        [section]: [...(prev.data[section] || []), newItem]
+      }
+    }));
+  };
+
+  // Remove item from array
+  const removeArrayItem = (section: string, index: number) => {
+    setResumeDocument(prev => ({
+      ...prev,
+      data: {
+        ...prev.data,
+        [section]: prev.data[section].filter((_: any, i: number) => i !== index)
+      }
+    }));
+  };
+
+  if (loading) {
+    return <Container>Loading...</Container>;
+  }
+
+  if (!resumeDocument) {
+    return <Container>Error loading resume data</Container>;
+  }
+
   return (
     <div className="min-h-screen py-12">
       <Container>
-        <Form>
-          <div className="flex justify-between items-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-800">Resume Builder</h1>
-            <div className="flex gap-4">
-              <label className="inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-xl hover:bg-blue-600 cursor-pointer transition-all duration-300 shadow-md hover:shadow-lg">
-                <input
-                  type="file"
-                  accept=".json"
-                  onChange={handleFileLoad}
-                  className="hidden"
-                />
-                Load Resume
-              </label>
-              <button
-                onClick={handleSave}
-                disabled={loading}
-                className="px-6 py-3 bg-green-500 text-white rounded-xl hover:bg-green-600 disabled:opacity-50 transition-all duration-300 shadow-md hover:shadow-lg"
-              >
-                {loading ? 'Saving...' : 'Save Resume'}
-              </button>
-            </div>
-          </div>
-
-          {error && (
-            <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-xl">
-              {error}
-            </div>
-          )}
-
+        <Header>
+          <HeaderTitle>Resume Builder</HeaderTitle>
           <ButtonGroup>
-            <Button type="submit">Save Resume</Button>
-            <Link to="/resume">
-              <Button type="button">View Resume</Button>
-            </Link>
+            <ActionButton 
+              className="secondary" 
+              onClick={() => navigate('/')}
+            >
+              <FaArrowLeft />
+              Back to Portfolio
+            </ActionButton>
+            <ActionButton 
+              className="primary" 
+              onClick={handleSave}
+              disabled={saving}
+            >
+              <FaSave />
+              {saving ? 'Saving...' : 'Save Changes'}
+            </ActionButton>
           </ButtonGroup>
+        </Header>
 
+        {showSuccess && (
+          <SuccessMessage>
+            <FaSave />
+            Changes saved successfully!
+          </SuccessMessage>
+        )}
+
+        <Form>
           <Section>
             <SectionTitle>Personal Information</SectionTitle>
             <SectionContent>
@@ -699,20 +814,16 @@ const ResumeBuilder: React.FC = () => {
                 <Label>Name</Label>
                 <Input
                   type="text"
-                  name="name"
-                  value={resumeDocument.data.personalInfo.name}
-                  onChange={(e) => handlePersonalInfoChange({ ...resumeDocument.data.personalInfo, name: e.target.value })}
-                  required
+                  value={(resumeDocument.data as any).name || ''}
+                  onChange={(e) => updateSection('name', e.target.value)}
                 />
               </FormGroup>
               <FormGroup>
                 <Label>Title</Label>
                 <Input
                   type="text"
-                  name="title"
-                  value={resumeDocument.data.personalInfo.title}
-                  onChange={(e) => handlePersonalInfoChange({ ...resumeDocument.data.personalInfo, title: e.target.value })}
-                  required
+                  value={(resumeDocument.data as any).title || ''}
+                  onChange={(e) => updateSection('title', e.target.value)}
                 />
               </FormGroup>
               <FormGroup>
@@ -720,8 +831,8 @@ const ResumeBuilder: React.FC = () => {
                 <Input
                   type="email"
                   name="email"
-                  value={resumeDocument.data.personalInfo.email}
-                  onChange={(e) => handlePersonalInfoChange({ ...resumeDocument.data.personalInfo, email: e.target.value })}
+                  value={(resumeDocument.data as any).personalInfo?.email}
+                  onChange={(e) => handlePersonalInfoChange({ ...(resumeDocument.data as any).personalInfo, email: e.target.value })}
                   required
                 />
               </FormGroup>
@@ -730,8 +841,8 @@ const ResumeBuilder: React.FC = () => {
                 <Input
                   type="tel"
                   name="phone"
-                  value={resumeDocument.data.personalInfo.phone}
-                  onChange={(e) => handlePersonalInfoChange({ ...resumeDocument.data.personalInfo, phone: e.target.value })}
+                  value={(resumeDocument.data as any).personalInfo?.phone}
+                  onChange={(e) => handlePersonalInfoChange({ ...(resumeDocument.data as any).personalInfo, phone: e.target.value })}
                   required
                 />
               </FormGroup>
@@ -740,8 +851,8 @@ const ResumeBuilder: React.FC = () => {
                 <Input
                   type="text"
                   name="location"
-                  value={resumeDocument.data.personalInfo.location}
-                  onChange={(e) => handlePersonalInfoChange({ ...resumeDocument.data.personalInfo, location: e.target.value })}
+                  value={(resumeDocument.data as any).personalInfo?.location}
+                  onChange={(e) => handlePersonalInfoChange({ ...(resumeDocument.data as any).personalInfo, location: e.target.value })}
                   required
                 />
               </FormGroup>
@@ -749,9 +860,9 @@ const ResumeBuilder: React.FC = () => {
                 <Label>Professional Summary</Label>
                 <TextArea
                   name="summary"
-                  value={resumeDocument.data.personalInfo.summary}
-                  onChange={(e) => handlePersonalInfoChange({ ...resumeDocument.data.personalInfo, summary: e.target.value })}
-                  required
+                  value={(resumeDocument.data as any).personalInfo?.summary || ''}
+                  onChange={(e) => updateSection('summary', e.target.value)}
+                  rows={4}
                 />
               </FormGroup>
             </SectionContent>
@@ -760,251 +871,338 @@ const ResumeBuilder: React.FC = () => {
           <Section>
             <SectionTitle>Experience</SectionTitle>
             <SectionContent>
-              {resumeDocument.data.experience.map((exp, index) => (
-                <div key={index}>
-                  <FormGroup>
-                    <Label>Company</Label>
-                    <Input
-                      type="text"
-                      value={exp.company}
-                      onChange={(e) => handleUpdateExperience(index, { ...exp, company: e.target.value })}
-                      required
-                    />
-                  </FormGroup>
+              {(resumeDocument.data as any).experience?.map((exp: any, index: number) => (
+                <div key={index} style={{ border: '1px solid #ccc', padding: '1rem', marginBottom: '1rem', borderRadius: '4px' }}>
                   <FormGroup>
                     <Label>Position</Label>
                     <Input
                       type="text"
-                      value={exp.position}
-                      onChange={(e) => handleUpdateExperience(index, { ...exp, position: e.target.value })}
-                      required
+                      value={exp.position || ''}
+                      onChange={(e) => updateArrayItem('experience', index, { position: e.target.value })}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label>Company</Label>
+                    <Input
+                      type="text"
+                      value={exp.company || ''}
+                      onChange={(e) => updateArrayItem('experience', index, { company: e.target.value })}
                     />
                   </FormGroup>
                   <FormGroup>
                     <Label>Start Date</Label>
                     <Input
                       type="date"
-                      value={exp.startDate}
-                      onChange={(e) => handleUpdateExperience(index, { ...exp, startDate: e.target.value })}
-                      required
+                      value={exp.startDate || ''}
+                      onChange={(e) => updateArrayItem('experience', index, { startDate: e.target.value })}
                     />
                   </FormGroup>
-                  <CheckboxContainer>
-                    <Checkbox
-                      type="checkbox"
-                      id={`current-position-${index}`}
-                      checked={exp.isCurrentPosition}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleUpdateExperience(index, { ...exp, isCurrentPosition: e.target.checked })}
+                  <FormGroup>
+                    <Label>End Date</Label>
+                    <Input
+                      type="date"
+                      value={exp.endDate || ''}
+                      onChange={(e) => updateArrayItem('experience', index, { endDate: e.target.value })}
                     />
-                    <CheckboxLabel htmlFor={`current-position-${index}`}>
-                      I currently work here
-                    </CheckboxLabel>
-                  </CheckboxContainer>
-                  {!exp.isCurrentPosition && (
-                    <FormGroup>
-                      <Label>End Date</Label>
-                      <Input
-                        type="date"
-                        value={exp.endDate || ''}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleUpdateExperience(index, { ...exp, endDate: e.target.value })}
-                        required={!exp.isCurrentPosition}
-                      />
-                    </FormGroup>
-                  )}
+                  </FormGroup>
                   <FormGroup>
                     <Label>Description</Label>
                     <TextArea
-                      value={exp.description}
-                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleUpdateExperience(index, { ...exp, description: e.target.value })}
-                      required
+                      value={exp.description || ''}
+                      onChange={(e) => updateArrayItem('experience', index, { description: e.target.value })}
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Label>Technologies (comma-separated)</Label>
+                    <Label>Technologies</Label>
                     <Input
                       type="text"
-                      value={exp.technologies.join(', ')}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                        handleUpdateExperience(index, {
-                          ...exp,
-                          technologies: e.target.value.split(',').map((tech: string) => tech.trim()),
-                        })
-                      }
-                      placeholder="e.g., React, TypeScript, Node.js"
+                      value={exp.technologies?.join(', ') || ''}
+                      onChange={(e) => updateArrayItem('experience', index, { technologies: e.target.value.split(',').map((tech: string) => tech.trim()) })}
                     />
                   </FormGroup>
-                  <ButtonGroup>
-                    <ActionButton
-                      type="button"
-                      className="delete"
-                      onClick={() => handleDeleteExperience(index)}
-                    >
-                      Delete Experience
-                    </ActionButton>
-                  </ButtonGroup>
+                  <FormGroup>
+                    <Label>Location</Label>
+                    <Input
+                      type="text"
+                      value={exp.location || ''}
+                      onChange={(e) => updateArrayItem('experience', index, { location: e.target.value })}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label>Highlights</Label>
+                    <TextArea
+                      value={exp.highlights?.join('\n') || ''}
+                      onChange={(e) => updateArrayItem('experience', index, { highlights: e.target.value.split('\n').map((highlight: string) => highlight.trim()) })}
+                    />
+                  </FormGroup>
+                  <ActionButton 
+                    type="button"
+                    className="danger"
+                    onClick={() => removeArrayItem('experience', index)}
+                  >
+                    <FaTrash />
+                    Remove Experience
+                  </ActionButton>
                 </div>
               ))}
             </SectionContent>
             <ButtonGroup>
-              <Button type="button" onClick={handleAddExperience}>
+              <ActionButton 
+                type="button" 
+                className="primary"
+                onClick={() => addArrayItem('experience', {
+                  position: '',
+                  company: '',
+                  startDate: '',
+                  endDate: '',
+                  isCurrentPosition: false,
+                  description: '',
+                  technologies: [],
+                  location: '',
+                  highlights: []
+                })}
+              >
+                <FaPlus />
                 Add Experience
-              </Button>
+              </ActionButton>
             </ButtonGroup>
           </Section>
 
           <Section>
             <SectionTitle>Education</SectionTitle>
             <SectionContent>
-              {resumeDocument.data.education.map((edu, index) => (
-                <div key={index}>
+              {(resumeDocument.data as any).education?.map((edu: any, index: number) => (
+                <div key={index} style={{ border: '1px solid #ccc', padding: '1rem', marginBottom: '1rem', borderRadius: '4px' }}>
                   <FormGroup>
                     <Label>Degree</Label>
                     <Input
                       type="text"
-                      value={edu.degree}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleUpdateEducation(index, { ...edu, degree: e.target.value })}
-                      required
+                      value={edu.degree || ''}
+                      onChange={(e) => updateArrayItem('education', index, { degree: e.target.value })}
                     />
                   </FormGroup>
                   <FormGroup>
                     <Label>Institution</Label>
                     <Input
                       type="text"
-                      value={edu.institution}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleUpdateEducation(index, { ...edu, institution: e.target.value })}
-                      required
+                      value={edu.institution || ''}
+                      onChange={(e) => updateArrayItem('education', index, { institution: e.target.value })}
                     />
                   </FormGroup>
                   <FormGroup>
                     <Label>Year</Label>
                     <Input
                       type="text"
-                      value={edu.year}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleUpdateEducation(index, { ...edu, year: e.target.value })}
-                      required
+                      value={edu.year || ''}
+                      onChange={(e) => updateArrayItem('education', index, { year: e.target.value })}
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Label>Description (Optional)</Label>
+                    <Label>Description</Label>
                     <TextArea
-                      value={edu.description || ""}
-                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleUpdateEducation(index, { ...edu, description: e.target.value })}
+                      value={edu.description || ''}
+                      onChange={(e) => updateArrayItem('education', index, { description: e.target.value })}
                     />
                   </FormGroup>
-                  <ButtonGroup>
-                    <ActionButton
-                      type="button"
-                      className="delete"
-                      onClick={() => handleDeleteEducation(index)}
-                    >
-                      Delete Education
-                    </ActionButton>
-                  </ButtonGroup>
+                  <FormGroup>
+                    <Label>GPA</Label>
+                    <Input
+                      type="text"
+                      value={edu.gpa || ''}
+                      onChange={(e) => updateArrayItem('education', index, { gpa: e.target.value })}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label>Field of Study</Label>
+                    <Input
+                      type="text"
+                      value={edu.fieldOfStudy || ''}
+                      onChange={(e) => updateArrayItem('education', index, { fieldOfStudy: e.target.value })}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label>Location</Label>
+                    <Input
+                      type="text"
+                      value={edu.location || ''}
+                      onChange={(e) => updateArrayItem('education', index, { location: e.target.value })}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label>Achievements</Label>
+                    <TextArea
+                      value={edu.achievements?.join('\n') || ''}
+                      onChange={(e) => updateArrayItem('education', index, { achievements: e.target.value.split('\n').map((achievement: string) => achievement.trim()) })}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label>Courses</Label>
+                    <TextArea
+                      value={edu.courses?.join('\n') || ''}
+                      onChange={(e) => updateArrayItem('education', index, { courses: e.target.value.split('\n').map((course: string) => course.trim()) })}
+                    />
+                  </FormGroup>
+                  <ActionButton 
+                    type="button"
+                    className="danger"
+                    onClick={() => removeArrayItem('education', index)}
+                  >
+                    <FaTrash />
+                    Remove Education
+                  </ActionButton>
                 </div>
               ))}
             </SectionContent>
             <ButtonGroup>
-              <Button type="button" onClick={handleAddEducation}>
+              <ActionButton 
+                type="button" 
+                className="primary"
+                onClick={() => addArrayItem('education', {
+                  degree: '',
+                  institution: '',
+                  year: '',
+                  description: '',
+                  gpa: '',
+                  fieldOfStudy: '',
+                  location: '',
+                  achievements: [],
+                  courses: []
+                })}
+              >
+                <FaPlus />
                 Add Education
-              </Button>
+              </ActionButton>
             </ButtonGroup>
           </Section>
 
           <Section>
             <SectionTitle>Skills</SectionTitle>
             <SectionContent>
-              {resumeDocument.data.skills.map((skill, index) => (
-                <div key={index}>
-                  <FormGroup>
-                    <Label>Category</Label>
-                    <Input
-                      type="text"
-                      value={skill.category}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleUpdateSkillCategory(index, { ...skill, category: e.target.value })}
-                      required
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <Label>Items</Label>
-                    <TextArea
-                      value={skill.items.join('\n')}
-                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleUpdateSkillCategory(index, { ...skill, items: e.target.value.split('\n') })}
-                      required
-                    />
-                  </FormGroup>
-                  <ButtonGroup>
-                    <ActionButton
-                      type="button"
-                      className="delete"
-                      onClick={() => handleDeleteSkillCategory(index)}
-                    >
-                      Delete Skill Category
-                    </ActionButton>
-                  </ButtonGroup>
+              {Object.keys(resumeDocument.data).filter(key => 
+                ['programmingLanguages', 'frameworksAndLibraries', 'tools', 'technologies', 'os'].includes(key)
+              ).map(skillType => (
+                <div key={skillType} style={{ marginBottom: '2rem' }}>
+                  <Label style={{ textTransform: 'capitalize', marginBottom: '1rem' }}>
+                    {skillType.replace(/([A-Z])/g, ' $1').trim()}
+                  </Label>
+                  <TextArea
+                    value={(resumeDocument.data as any)[skillType]?.join('\n') || ''}
+                    onChange={(e) => updateSection(skillType, e.target.value.split('\n').filter(item => item.trim()))}
+                    rows={4}
+                    placeholder="Enter skills, one per line"
+                  />
                 </div>
               ))}
             </SectionContent>
-            <ButtonGroup>
-              <Button type="button" onClick={handleAddSkillCategory}>
-                Add Skill Category
-              </Button>
-            </ButtonGroup>
           </Section>
 
           <Section>
             <SectionTitle>Projects</SectionTitle>
             <SectionContent>
-              {resumeDocument.data.projects.map((project, index) => (
-                <div key={index}>
+              {(resumeDocument.data as any).projects?.map((project: any, index: number) => (
+                <div key={index} style={{ border: '1px solid #ccc', padding: '1rem', marginBottom: '1rem', borderRadius: '4px' }}>
                   <FormGroup>
                     <Label>Name</Label>
                     <Input
                       type="text"
-                      value={project.name}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleUpdateProject(index, { ...project, name: e.target.value })}
-                      required
+                      value={project.name || ''}
+                      onChange={(e) => updateArrayItem('projects', index, { name: e.target.value })}
                     />
                   </FormGroup>
                   <FormGroup>
                     <Label>Description</Label>
                     <TextArea
-                      value={project.description}
-                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleUpdateProject(index, { ...project, technologies: e.target.value.split('\n') })}
-                      required
+                      value={project.description || ''}
+                      onChange={(e) => updateArrayItem('projects', index, { description: e.target.value })}
                     />
                   </FormGroup>
                   <FormGroup>
                     <Label>Technologies</Label>
-                    <TextArea
-                      value={project.technologies.join('\n')}
-                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleUpdateProject(index, { ...project, technologies: e.target.value.split('\n') })} required
+                    <Input
+                      type="text"
+                      value={project.technologies?.join(', ') || ''}
+                      onChange={(e) => updateArrayItem('projects', index, { technologies: e.target.value.split(',').map((tech: string) => tech.trim()) })}
                     />
                   </FormGroup>
                   <FormGroup>
                     <Label>Link</Label>
                     <Input
                       type="text"
-                      value={project.link}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleUpdateProject(index, { ...project, link: e.target.value })}
-                      required
+                      value={project.link || ''}
+                      onChange={(e) => updateArrayItem('projects', index, { link: e.target.value })}
                     />
                   </FormGroup>
-                  <ButtonGroup>
-                    <ActionButton
-                      type="button"
-                      className="delete"
-                      onClick={() => handleDeleteProject(index)}
-                    >
-                      Delete Project
-                    </ActionButton>
-                  </ButtonGroup>
+                  <FormGroup>
+                    <Label>Start Date</Label>
+                    <Input
+                      type="date"
+                      value={project.startDate || ''}
+                      onChange={(e) => updateArrayItem('projects', index, { startDate: e.target.value })}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label>End Date</Label>
+                    <Input
+                      type="date"
+                      value={project.endDate || ''}
+                      onChange={(e) => updateArrayItem('projects', index, { endDate: e.target.value })}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label>Role</Label>
+                    <Input
+                      type="text"
+                      value={project.role || ''}
+                      onChange={(e) => updateArrayItem('projects', index, { role: e.target.value })}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label>Team Size</Label>
+                    <Input
+                      type="text"
+                      value={project.teamSize || ''}
+                      onChange={(e) => updateArrayItem('projects', index, { teamSize: e.target.value })}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label>Achievements</Label>
+                    <TextArea
+                      value={project.achievements?.join('\n') || ''}
+                      onChange={(e) => updateArrayItem('projects', index, { achievements: e.target.value.split('\n').map((achievement: string) => achievement.trim()) })}
+                    />
+                  </FormGroup>
+                  <ActionButton 
+                    type="button"
+                    className="danger"
+                    onClick={() => removeArrayItem('projects', index)}
+                  >
+                    <FaTrash />
+                    Remove Project
+                  </ActionButton>
                 </div>
               ))}
             </SectionContent>
             <ButtonGroup>
-              <Button type="button" onClick={handleAddProject}>
+              <ActionButton 
+                type="button" 
+                className="primary"
+                onClick={() => addArrayItem('projects', {
+                  name: '',
+                  description: '',
+                  technologies: [],
+                  link: '',
+                  startDate: '',
+                  endDate: '',
+                  isOngoing: false,
+                  highlights: [],
+                  role: '',
+                  teamSize: '',
+                  achievements: []
+                })}
+              >
+                <FaPlus />
                 Add Project
-              </Button>
+              </ActionButton>
             </ButtonGroup>
           </Section>
 

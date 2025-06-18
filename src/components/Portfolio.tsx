@@ -122,6 +122,10 @@ function Portfolio() {
     }, []);
 
     const handleTabClick = (tabName: string) => {
+        if (tabName === 'old-website') {
+            window.open('https://old.insidedata.in', '_blank');
+            return;
+        }
         if (tabName === 'resume') return; // Prevent clicking on resume tab
         setActiveTab(tabName);
     };
@@ -156,12 +160,8 @@ function Portfolio() {
                 }} />;
             case 'certifications':
                 return <Certifications certifications={resumeData.certifications} />;
-            case 'badges':
-                return <Badges />;
             case 'contact':
-                return <Contacts contact={resumeData.contact} />;
-            case 'resume':
-                return <Resume />;
+                return <Contacts contacts={resumeData.contacts} />;
             default:
                 return <About />;
         }
@@ -217,28 +217,25 @@ function Portfolio() {
                             </li>
                             <li className="nav-item">
                                 <NavLink 
-                                    active={activeTab === 'certifications'} 
                                     onClick={() => handleTabClick('certifications')}
+                                    active={activeTab === 'certifications'}
                                 >
                                     CERTIFICATIONS
                                 </NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink 
-                                    active={activeTab === 'contact'} 
                                     onClick={() => handleTabClick('contact')}
+                                    active={activeTab === 'contacts'}
                                 >
-                                    CONTACT
+                                    CONTACTS
                                 </NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink 
-                                    active={activeTab === 'resume'} 
-                                    onClick={() => handleTabClick('resume')}
-                                    disabled={true}
-                                    title="Resume feature is currently disabled"
+                                    onClick={() => handleTabClick('old-website')}
                                 >
-                                    DOWNLOAD RESUME
+                                    OLD PORTFOLIO
                                 </NavLink>
                             </li>
                         </ul>

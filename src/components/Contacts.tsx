@@ -1,41 +1,97 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
-const TabContent = styled.div`
+const ContactContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
   background: transparent;
   border-radius: 8px;
-  padding: 2rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 `;
 
-const ContactGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-`;
-
 const ContactCard = styled.div`
-  background:transparent;
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid #eee;
+  // background: rgba(255, 255, 255, 0.05);
+  // border-radius: 12px;
+  padding: 2rem;
+  border-left: 4px solid #64ffda;
+  transition: all 0.3s ease;
+
+  // &:hover {
+  //   transform: translateY(-5px);
+  //   background: rgba(255, 255, 255, 0.1);
+  // }
 `;
 
 const CardTitle = styled.h3`
-  color: #333;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
+  color:rgb(255, 255, 255);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid #64ffda;
-  color:white;
+`;
 
+const ContactGrid = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const ContactItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  // background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  width: 100%;
+
+  &:hover {
+    // background: rgba(255, 255, 255, 0.1);
+    transform: translateX(15px);
+  }
+`;
+
+const ContactIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(100, 255, 218, 0.1);
+  border-radius: 50%;
+  color: #64ffda;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgb(0, 255, 195);
+
+  &:hover {
+    background: #64ffda;
+    color: #000;
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgb(0, 255, 195);
+  }
+`;
+
+const ContactInfo = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+`;
+
+const ContactValue = styled.div`
+  color: white;
+  font-weight: 500;
 `;
 
 const ContactLink = styled.a`
   color: #64ffda;
   text-decoration: none;
   display: block;
-  margin-bottom: 0.5rem;
   transition: color 0.2s ease;
 
   &:hover {
@@ -44,63 +100,63 @@ const ContactLink = styled.a`
   }
 `;
 
-const ContactText = styled.p`
-  color: #444;
-  margin: 0;
-  line-height: 1.6;
-`;
-
 interface Contact {
-  email: string;
-  phone: string;
-  address: string;
-  linkedIn: string;
-  github: string;
-  portfolio: string;
+  type: string;
+  value: string;
+  link?: string;
+  icon: string;
 }
 
 interface ContactsProps {
-  contact: Contact;
+  contacts: Contact[];
 }
 
-const Contacts: React.FC<ContactsProps> = ({ contact }) => {
+const Contacts: React.FC<ContactsProps> = ({ contacts }) => {
+  const getIcon = (iconName: string) => {
+    switch (iconName.toLowerCase()) {
+      case 'github':
+        return <FaGithub />;
+      case 'linkedin':
+        return <FaLinkedin />;
+      case 'email':
+        return <FaEnvelope />;
+      case 'phone':
+        return <FaPhone />;
+      case 'location':
+        return <FaMapMarkerAlt />;
+      default:
+        return <FaEnvelope />;
+    }
+  };
+
   return (
-    <TabContent>
-      <h2>Contact Information</h2>
-      <ContactGrid>
-        <ContactCard>
-          <CardTitle>Email</CardTitle>
-          <ContactLink href={`mailto:${contact.email}`}>
-            {contact.email}
-          </ContactLink>
-        </ContactCard>
-
-        <ContactCard>
-          <CardTitle>Phone</CardTitle>
-          <ContactLink href={`tel:${contact.phone}`}>
-            {contact.phone}
-          </ContactLink>
-        </ContactCard>
-
-        <ContactCard>
-          <CardTitle>Location</CardTitle>
-          <ContactText>{contact.address}</ContactText>
-        </ContactCard>
-
-        <ContactCard>
-          <CardTitle>Social Links</CardTitle>
-          <ContactLink href={contact.linkedIn} target="_blank" rel="noopener noreferrer">
-            LinkedIn
-          </ContactLink>
-          <ContactLink href={contact.github} target="_blank" rel="noopener noreferrer">
-            GitHub
-          </ContactLink>
-          <ContactLink href={contact.portfolio} target="_blank" rel="noopener noreferrer">
-            Portfolio
-          </ContactLink>
-        </ContactCard>
-      </ContactGrid>
-    </TabContent>
+    <ContactContainer>
+      <ContactCard>
+        <CardTitle>Get In Touch</CardTitle>
+        <ContactGrid>
+          {contacts.map((contact, index) => (
+            <ContactItem key={index}>
+              <ContactIcon>
+                {getIcon(contact.icon)}
+              </ContactIcon>
+              <ContactInfo>
+                {contact.link ? (
+                  <ContactLink 
+                    href={contact.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    {contact.value}
+                  </ContactLink>
+                ) : (
+                  <ContactValue>{contact.value}</ContactValue>
+                )}
+              </ContactInfo>
+            </ContactItem>
+          ))}
+        </ContactGrid>
+      </ContactCard>
+    </ContactContainer>
   );
 };
 
