@@ -75,7 +75,6 @@ const EducationCard = styled.div`
   gap: 2rem;
   align-items: center;
   border-left-color: #64ffda;
-
   &:hover {
     transform: translateX(10px);
   }

@@ -143,20 +143,20 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
             )}
           </LogoContainer>
           <ContentContainer>
-            <Title>
-              {project.url ? (
-                <ProjectLink href={project.url} target="_blank" rel="noopener noreferrer">
+            {project.url ? (
+              <Title>
+                <a href={project.url} target="_blank" rel="noopener noreferrer">
                   {project.name}
-                </ProjectLink>
-              ) : (
-                project.name
-              )}
-            </Title>
+                </a>
+              </Title>
+            ) : (
+              <Title>{project.name}</Title>
+            )}
             <Company>{project.company}</Company>
             <Duration>
               {project.started} - {project.ended}
             </Duration>
-            <Description>{project.description}</Description>
+            <Description>{project.contribution}</Description>
             <Tools>{project.tools}</Tools>
           </ContentContainer>
         </ProjectCard>

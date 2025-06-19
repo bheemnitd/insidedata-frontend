@@ -89,7 +89,7 @@ export const os = ['Linux', 'Mac', 'Windows'];
 export interface Project {
   name: string;
   company: string;
-  description: string;
+  contribution: string;
   tools: string;
   started: string;
   ended: string;
