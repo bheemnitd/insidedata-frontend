@@ -160,7 +160,7 @@ function Portfolio() {
                 }} />;
             case 'certifications':
                 return <Certifications certifications={resumeData.certifications} />;
-            case 'contact':
+            case 'contacts':
                 return <Contacts contacts={resumeData.contacts} />;
             default:
                 return <About />;
@@ -175,14 +175,6 @@ function Portfolio() {
                               onClick={() => handleTabClick('about')}>{resumeData?.personalInfo?.name || 'BHEEM KUMAR'}</NavBrand>
                     <div className="collapse navbar-collapse" id="collapsibleNavbar">
                         <ul className="navbar-nav">
-                            {/* <li className="nav-item">
-                                <NavLink 
-                                    active={activeTab === 'about'} 
-                                    onClick={() => handleTabClick('about')}
-                                >
-                                    ABOUT
-                                </NavLink>
-                            </li> */}
                             <li className="nav-item">
                                 <NavLink 
                                     active={activeTab === 'education'} 
@@ -225,17 +217,10 @@ function Portfolio() {
                             </li>
                             <li className="nav-item">
                                 <NavLink 
-                                    onClick={() => handleTabClick('contact')}
+                                    onClick={() => handleTabClick('contacts')}
                                     active={activeTab === 'contacts'}
                                 >
                                     CONTACTS
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink 
-                                    onClick={() => handleTabClick('old-website')}
-                                >
-                                    OLD PORTFOLIO
                                 </NavLink>
                             </li>
                         </ul>

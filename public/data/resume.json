@@ -7,13 +7,11 @@
       "data": {
         "personalInfo": {
           "name": "Bheem Kumar",
-          "intro": "Experienced Python Developer with over 5 years of industry expertise, specializing in Django and API development, with comprehensive knowledge of SQL and NoSQL databases. Proficient in designing low-latency and highly scalable solutions, ensuring optimal performance and responsiveness. Skilled in leveraging Python to build robust web applications and RESTFull APIs, with a keen focus on delivering high-quality solutions that meet business objectives. Passionate about continuous learning and staying updated with the latest technologies and best practices in software development. Strong problem-solving abilities and a collaborative team player committed to driving innovation and achieving project success.",
-          "about": "Experienced Python Developer with over 5 years of industry expertise, specializing in Django and API development, with comprehensive knowledge of SQL and NoSQL databases. Proficient in designing low-latency and highly scalable solutions, ensuring optimal performance and responsiveness. Skilled in leveraging Python to build robust web applications and RESTFull APIs, with a keen focus on delivering high-quality solutions that meet business objectives. Passionate about continuous learning and staying updated with the latest technologies and best practices in software development. Strong problem-solving abilities and a collaborative team player committed to driving innovation and achieving project success."
-        },
+          "about":"With 7 years of overall experience, including 4.5 years in the corporate sector, I am a Senior Software Engineer specializing in Python backend development. Skilled in Python, Django, Django REST Framework, SQL, and cloud deployment, I build scalable APIs and robust solutions, leveraging AWS, frontend tech, and a strong passion for data science and problem-solving"},
         "contact": {
           "email": "bheemnitd@gmail.com",
-          "phone": "+91 (878) 936-7377",
-          "address": "Gurugram INDIA",
+          "phone": "+91 (956) 4916773",
+          "address": "Hyderabad INDIA",
           "linkedIn": "https://www.linkedin.com/in/bheem-kumar-1b294113a/",
           "github": "https://github.com/bheemnitd",
           "portfolio": "https://insidedata.in"

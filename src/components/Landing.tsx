@@ -50,7 +50,7 @@ const Button = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-  background: linear-gradient(45deg,rgb(255, 0, 191),rgb(255, 0, 162));
+  background: linear-gradient(45deg,rgb(0, 234, 255),rgb(0, 183, 255));
     box-shadow: 0 0 15pxrgb(0, 255, 247);
   }
 `;
