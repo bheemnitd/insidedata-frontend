@@ -134,7 +134,7 @@
           {
             "name": "Denali Customer Support",
             "company": "Coforge(Client: Trinet)",
-            "contribution": "As a Senior Software Engineer at Coforge, I played a pivotal role in the development of the Denali Customer Support application for Trinet. My contribution included designing and implementing robust backend solutions using Python and Django, ensuring seamless integration with various APIs, and optimizing the application's performance for high scalability. I also collaborated closely with cross-functional teams to deliver a user-friendly interface and enhance the overall customer experience.",
+            "contribution": "TriNet, a top HR outsourcing firm, empowers small and midsize businesses with payroll, benefits, compliance, and risk management. In my role, I addressed client-reported defects on a Django-based HR platform, optimizing code and system reliability. This ensured efficient, compliant HR solutions, helping clients streamline their human resources and business operations seamlessly.",
             "tools": "Python | Django | Django RestFramework",
             "started": "Jun 2024",
             "ended": "Jul 2025",
@@ -145,7 +145,7 @@
           {
             "name": "Beagle",
             "company": "Decisionpoint",
-            "contribution": "Beagle is an AI-powered platform that helps businesses automate their decision-making processes. It uses natural language processing and machine learning to analyze business rules and create automated workflows.",
+            "contribution": "BeagleGPT is an advanced AI-powered analytics platform designed to deliver real-time data insights. Throughout my engagement, I proactively identified and resolved critical defects, developed comprehensive user guides, and ensured seamless integration to drive user adoption across client organizations. Additionally, I authored detailed API documentation to facilitate a deeper understanding and effective utilization of the platform’s capabilities.",
             "tools": "Python | Django | Django RestFramework | Docker | OpenAPI",
             "started": "Nov 2023",
             "ended": "Jan 2024",
@@ -154,23 +154,23 @@
             "alt": "Beagle"
           },
           {
-            "name": "Kelloggs Command Center Tool",
+            "name": "Command Center",
             "company": "Dcisionpoint(Client: Kelloggs)",
-            "contribution": "For Command Center, I efficiently retrieved data from Glu using AWS API, workflow scheduler etc.",
+            "contribution": "The project focused on building an advanced ETL workflow monitoring tool for AWS Glue, enabling real-time tracking of workflow executions, failures, and scheduling. My key contributions involved identifying and resolving critical bugs, enhancing tool features for improved performance, and developing comprehensive documentation. These efforts ensured reliable workflow management and seamless data integration, supporting efficient operations for client organizations.",
             "tools": "Python | Django | OpenAPI | AWS Glue | Athena | S3",
-            "started": "Oct 2022",
-            "ended": "Nov 2023",
+            "started": "Jan 2022",
+            "ended": "Oct 2023",
             "url": "",
             "logo":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Kellogg%27s-Logo.svg/1200px-Kellogg%27s-Logo.svg.png",
             "alt":"Kelloggs Command Center Tool" 
           },
           {
-            "name": "Kelloggs Target Builder",
+            "name": "Target Builder",
             "company": "Dcisionpoint(Client: Kelloggs)",
-            "contribution": "In Project Target Builder, I spearheaded API development utilizing core Python on Lambda functions.",
+            "contribution": "This tool is a sales performance analytics dashboard for Kellogg’s, tracking monthly sales, store count, distribution, and SKU range for target groups, while benchmarking against defined targets. My contribution included creating filter tools to analyze data and set future sales targets, enabling Kellogg’s to monitor performance and plan strategically for improved business outcomes.",
             "tools": "Python | AWS Lambda | AWS | Athena | S3",
             "started": "Nov 2021",
-            "ended": "Oct 2022",
+            "ended": "Dec 2022",
             "url": "",
             "logo":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Kellogg%27s-Logo.svg/1200px-Kellogg%27s-Logo.svg.png",
             "alt":"Kelloggs Target Builder" 
@@ -187,25 +187,38 @@
             "logo":"",
             "alt": "ERP Patashala"
           },
+
+          {
+            "name": "Penguinbook",
+            "company": "Self practice as skill devlopment",
+            "client": "",
+            "contribution": "Penguinbook is a social media web application where users can create friends, chat, post content, like, and comment. It offers an interactive platform for social networking, enabling seamless communication and content sharing among users, fostering engagement and community building.",
+            "tools": "Python | Django | Jinja2 | HTML | CSS | Javascript | Jquery | ",
+            "started": "Feb 2020",
+            "ended": "May 2021",
+            "url": "",
+            "logo":"",
+            "alt": "Penguinbook"
+          },
           {
             "name": "Python Tutorial",
             "company": "Hudsondata",
-            "contribution": "My role involved curating and developing comprehensive Python tutorial content organized by topics. This initiative aimed to facilitate a structured learning experience for new team members, enabling them to acquire proficiency in Python efficiently.",
-            "tools": "Python",
+            "contribution": "Hudsondata is a software firm specializing in AI/ML solutions and data-driven consulting for industries like finance and insurance. My role involved curating and developing comprehensive Python tutorial content organized by topic, facilitating structured learning for new team members and enabling efficient proficiency in Python.",
+            "tools": "Python | Matplotlib",
             "started": "Aug 2019",
             "ended": "Jan 2020",
-            "url": "",
+            "url": "https://github.com/bheemnitd/penguinbook",
             "logo":"",
             "alt":"Python Tutorial"            
           },
           {
-            "name": "Environmental Sound classification",
-            "company": "Self practice as skill development",
-            "contribution": "A model which is used to identify the class of sound, it takes 5 secs of audio file and predicts the class. Where we had 2000 audio clips. We converted it into spectrograms and then trained it. The accuracy of the model is 97%.",
-            "tools": "Python | pandas | keras",
+            "name": "Machine Learning & Deep Learning",
+            "company": "Self practice as skill development in ML and DL",
+            "contribution": "During this period, I focused on upskilling my knowledge in machine learning and deep learning by working on multiple hands-on projects. Each project, including an environmental sound classifier and other applications, is documented and available on my GitHub, showcasing my practical learning and growth in these advanced technologies.",
+            "tools": "Python | Numpy | pandas | Tensorflow | keras | Scikit Learn | Matplotlib",
             "started": "Jun 2018",
-            "ended": "Aug 2019",
-            "url": "https://github.com/bheemnitd/Environmental-Sound-Classification",
+            "ended": "July 2019",
+            "url": "https://github.com/bheemnitd/",
             "logo":"https://raw.githubusercontent.com/bheemnitd/Environmental-Sound-Classification/refs/heads/master/images/Selection_009.png",
             "alt":"Environmental Sound classification" 
           },

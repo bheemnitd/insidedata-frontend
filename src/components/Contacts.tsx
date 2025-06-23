@@ -140,7 +140,13 @@ const Contacts: React.FC<ContactsProps> = ({ contacts }) => {
                 {getIcon(contact.icon)}
               </ContactIcon>
               <ContactInfo>
-                {contact.link ? (
+                {contact.icon.toLowerCase() === 'email' ? (
+                  <ContactLink 
+                    href={`mailto:${contact.value}`}
+                  >
+                    {contact.value}
+                  </ContactLink>
+                ) : contact.link ? (
                   <ContactLink 
                     href={contact.link} 
                     target="_blank" 
