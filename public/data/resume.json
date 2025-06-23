@@ -7,7 +7,7 @@
       "data": {
         "personalInfo": {
           "name": "Bheem Kumar",
-          "about":"With 7 years of overall experience, including 4.5 years in the corporate sector, I am a Senior Software Engineer specializing in Python backend development. Skilled in Python, Django, Django REST Framework, SQL, and cloud deployment, I build scalable APIs and robust solutions, leveraging AWS, frontend tech, and a strong passion for data science and problem-solving"},
+          "about":"With 7 years of overall experience, including 4.5 years in the corporate sector, I am a Senior Software Engineer specializing in Python backend development. Skilled in Python, Django, Django REST Framework, SQL, and cloud deployment, I build scalable APIs and robust solutions, leveraging AWS, frontend tech, and a strong passion for data science and problem-solving."},
         "contact": {
           "email": "bheemnitd@gmail.com",
           "phone": "+91 (956) 4916773",
@@ -224,7 +224,7 @@
         "certifications": [
           {
             "name": "Azure Fundamentals",
-            "path": "src/assets/certificates/cloud/azure_fundamentals.png",
+            "path": "/assets/certificates/cloud/azure_fundamentals.png",
             "type": "image",
             "issuingAuthority": "Microsoft",
             "year": "2024",
@@ -232,7 +232,7 @@
           },
           {
             "name": "Python Advance",
-            "path": "src/assets/certificates/language/python_advance.jpg",
+            "path": "/assets/certificates/language/python_advance.jpg",
             "type": "image",
             "issuingAuthority": "Cutshort",
             "year": "2024",
@@ -240,7 +240,7 @@
           },  
           {
             "name": "Java Intermediate",
-            "path": "src/assets/certificates/language/java_intermediate.png",
+            "path": "/assets/certificates/language/java_intermediate.png",
             "type": "image",
             "issuingAuthority": "Hackerrank",
             "year": "2024",
@@ -248,7 +248,7 @@
           },
           {
             "name": "Problem Solving Basic",
-            "path": "src/assets/certificates/others/problem_solving_basic.png",
+            "path": "/assets/certificates/others/problem_solving_basic.png",
             "type": "image",
             "issuingAuthority": "Hackerrank",
             "year": "2024",
@@ -256,7 +256,7 @@
           },
           {
             "name": "SQL Basic",
-            "path": "src/assets/certificates/language/sql_basic.png",
+            "path": "/assets/certificates/language/sql_basic.png",
             "type": "image",
             "issuingAuthority": "Hackerrank",
             "year": "2024",
@@ -264,7 +264,7 @@
           },
           {
             "name": "Python Basic",
-            "path": "src/assets/certificates/language/python_basic.png",
+            "path": "/assets/certificates/language/python_basic.png",
             "type": "image",
             "issuingAuthority": "Hackerrank",  
             "year": "2024",
@@ -272,7 +272,7 @@
           },
           {
             "name": "Java Basic",
-            "path": "src/assets/certificates/language/java_basic.png",
+            "path": "/assets/certificates/language/java_basic.png",
             "type": "image",
             "issuingAuthority": "Hackerrank",
             "year": "2024",
@@ -280,469 +280,469 @@
           },
           {
             "name": "AI Spark",
-            "path": "src/assets/certificates/ai/AI Spark.pdf",
+            "path": "/assets/certificates/ai/AI Spark.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Generative AI and Its Impact to Everyday Business",
-            "path": "src/assets/certificates/ai/Generative AI and Its Impact to Everyday Business.pdf",
+            "path": "/assets/certificates/ai/Generative AI and Its Impact to Everyday Business.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Using AI to Improve the Employee Experience",
-            "path": "src/assets/certificates/ai/Using AI to Improve the Employee Experience.pdf",
+            "path": "/assets/certificates/ai/Using AI to Improve the Employee Experience.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Asymptotic Notation",
-            "path": "src/assets/certificates/algorithm/Asymptotic Notation.pdf",
+            "path": "/assets/certificates/algorithm/Asymptotic Notation.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Merge Sort",
-            "path": "src/assets/certificates/algorithm/Merge Sort.pdf",
+            "path": "/assets/certificates/algorithm/Merge Sort.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Introduction To Dynamic Programming In Python",
-            "path": "src/assets/certificates/algorithm/Introduction To Dynamic Programming In Python.pdf",
+            "path": "/assets/certificates/algorithm/Introduction To Dynamic Programming In Python.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Linked List Data Structure",
-            "path": "src/assets/certificates/data-structure/Linked List Data Structure.pdf",
+            "path": "/assets/certificates/data-structure/Linked List Data Structure.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Stacks Data Structure",
-            "path": "src/assets/certificates/data-structure/Stacks Data Structure.pdf",
+            "path": "/assets/certificates/data-structure/Stacks Data Structure.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Data Structures & Algorithms in Python: Implementing Trees & Graphs",
-            "path": "src/assets/certificates/data-structure/Data Structures & Algorithms in Python_ Implementing Trees & Graphs.pdf",
+            "path": "/assets/certificates/data-structure/Data Structures & Algorithms in Python_ Implementing Trees & Graphs.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Software Design and Development: Design Patterns & SOLID Principles",
-            "path": "src/assets/certificates/design-pattern/Software Design and Development_ Design Patterns & SOLID Principles.pdf",
+            "path": "/assets/certificates/design-pattern/Software Design and Development_ Design Patterns & SOLID Principles.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Python 3",
-            "path": "src/assets/certificates/language/Python 3.pdf",
+            "path": "/assets/certificates/language/Python 3.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Python: Tuples",
-            "path": "src/assets/certificates/language/Python_ Tuples.pdf",
+            "path": "/assets/certificates/language/Python_ Tuples.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Python: List Comprehension",
-            "path": "src/assets/certificates/language/Python_ List Comprehension.pdf",
+            "path": "/assets/certificates/language/Python_ List Comprehension.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Python: Control Flow",
-            "path": "src/assets/certificates/language/Python_ Control Flow.pdf",
+            "path": "/assets/certificates/language/Python_ Control Flow.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Python: Loops",
-            "path": "src/assets/certificates/language/Python_ Loops.pdf",
+            "path": "/assets/certificates/language/Python_ Loops.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Python: Lists",
-            "path": "src/assets/certificates/language/Python_ Lists.pdf",
+            "path": "/assets/certificates/language/Python_ Lists.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Python: Functions",
-            "path": "src/assets/certificates/language/Python_ Functions.pdf",
+            "path": "/assets/certificates/language/Python_ Functions.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Python: Strings",
-            "path": "src/assets/certificates/language/Python_ Strings.pdf",
+            "path": "/assets/certificates/language/Python_ Strings.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Python: Dictionaries",
-            "path": "src/assets/certificates/language/Python_ Dictionaries.pdf",
+            "path": "/assets/certificates/language/Python_ Dictionaries.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Python: Classes",
-            "path": "src/assets/certificates/language/Python_ Classes.pdf",
+            "path": "/assets/certificates/language/Python_ Classes.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Python: Lambda Functions",
-            "path": "src/assets/certificates/language/Python_ Lambda Functions.pdf",
+            "path": "/assets/certificates/language/Python_ Lambda Functions.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Python: Higher-Order Functions",
-            "path": "src/assets/certificates/language/Python_ Higher-Order Functions.pdf",
+            "path": "/assets/certificates/language/Python_ Higher-Order Functions.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Python: Decorators",
-            "path": "src/assets/certificates/language/Python_ Decorators.pdf",
+            "path": "/assets/certificates/language/Python_ Decorators.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Python: Design Patterns",
-            "path": "src/assets/certificates/language/Python_ Design Patterns.pdf",
+            "path": "/assets/certificates/language/Python_ Design Patterns.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Deploying A Simple Python Script With Flask",
-            "path": "src/assets/certificates/language/Deploying A Simple Python Script With Flask.pdf",
+            "path": "/assets/certificates/language/Deploying A Simple Python Script With Flask.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Coding Challenge: Recursion vs. Iteration",
-            "path": "src/assets/certificates/language/Coding Challenge_ Recursion vs. Iteration.pdf",
+            "path": "/assets/certificates/language/Coding Challenge_ Recursion vs. Iteration.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Agile Foundations: Scrum Methodology",
-            "path": "src/assets/certificates/agile/Agile Foundations_ Scrum Methodology.pdf",
+            "path": "/assets/certificates/agile/Agile Foundations_ Scrum Methodology.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Agile Principles and Methodologies",
-            "path": "src/assets/certificates/agile/Agile Principles and Methodologies.pdf",
+            "path": "/assets/certificates/agile/Agile Principles and Methodologies.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Agile Fundamentals: User Stories and the Iteration and Release Plan",
-            "path": "src/assets/certificates/agile/Agile Fundamentals_ User Stories and the Iteration and Release Plan.pdf",
+            "path": "/assets/certificates/agile/Agile Fundamentals_ User Stories and the Iteration and Release Plan.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Agile Fundamentals: Project Risk, Communication, and Iteration Planning",
-            "path": "src/assets/certificates/agile/Agile Fundamentals_ Project Risk, Communication, and Iteration Planning.pdf",
+            "path": "/assets/certificates/agile/Agile Fundamentals_ Project Risk, Communication, and Iteration Planning.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Agile Fundamentals: Backlog, Impediments, Releases, and Agile in the Organization",
-            "path": "src/assets/certificates/agile/Agile Fundamentals_ Backlog, Impediments, Releases, and Agile in the Organization.pdf",
+            "path": "/assets/certificates/agile/Agile Fundamentals_ Backlog, Impediments, Releases, and Agile in the Organization.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Advanced Agile: Tools & Techniques",
-            "path": "src/assets/certificates/agile/Advanced Agile_ Tools & Techniques.pdf",
+            "path": "/assets/certificates/agile/Advanced Agile_ Tools & Techniques.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Scrum Toolbox: Charts & Task Boards",
-            "path": "src/assets/certificates/agile/Scrum Toolbox_ Charts & Task Boards.pdf",
+            "path": "/assets/certificates/agile/Scrum Toolbox_ Charts & Task Boards.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Scrum Toolbox: Jira for Scrum",
-            "path": "src/assets/certificates/agile/Scrum Toolbox_ Jira for Scrum.pdf",
+            "path": "/assets/certificates/agile/Scrum Toolbox_ Jira for Scrum.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Scrum Toolbox: Traditional Scrum Tools",
-            "path": "src/assets/certificates/agile/Scrum Toolbox_ Traditional Scrum Tools.pdf",
+            "path": "/assets/certificates/agile/Scrum Toolbox_ Traditional Scrum Tools.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Final Exam: Agile Foundations",
-            "path": "src/assets/certificates/agile/Final Exam_ Agile Foundations.pdf",
+            "path": "/assets/certificates/agile/Final Exam_ Agile Foundations.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "AI in the Workplace",
-            "path": "src/assets/certificates/ai/AI in the Workplace.pdf",
+            "path": "/assets/certificates/ai/AI in the Workplace.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Harnessing the Disruption of Generative AI",
-            "path": "src/assets/certificates/ai/Harnessing the Disruption of Generative AI.pdf",
+            "path": "/assets/certificates/ai/Harnessing the Disruption of Generative AI.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Reimagining Marketing with Generative AI",
-            "path": "src/assets/certificates/ai/Reimagining Marketing with Generative AI.pdf",
+            "path": "/assets/certificates/ai/Reimagining Marketing with Generative AI.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Reimagining Product Management with Generative AI",
-            "path": "src/assets/certificates/ai/Reimagining Product Management with Generative AI.pdf",
+            "path": "/assets/certificates/ai/Reimagining Product Management with Generative AI.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Reimagining the Customer Experience with Generative AI",
-            "path": "src/assets/certificates/ai/Reimagining the Customer Experience with Generative AI.pdf",
+            "path": "/assets/certificates/ai/Reimagining the Customer Experience with Generative AI.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Reimagining the Sales Process with Generative AI",
-            "path": "src/assets/certificates/ai/Reimagining the Sales Process with Generative AI.pdf",
+            "path": "/assets/certificates/ai/Reimagining the Sales Process with Generative AI.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Unlocking Business Solutions with AI-Powered Analytics",
-            "path": "src/assets/certificates/ai/Unlocking Business Solutions with AI-Powered Analytics.pdf",
+            "path": "/assets/certificates/ai/Unlocking Business Solutions with AI-Powered Analytics.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "A* Algorithm",
-            "path": "src/assets/certificates/algorithm/A_ Algorithm.pdf",
+            "path": "/assets/certificates/algorithm/A_ Algorithm.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Binary Search",
-            "path": "src/assets/certificates/algorithm/Binary Search.pdf",
+            "path": "/assets/certificates/algorithm/Binary Search.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Bubble Sort",
-            "path": "src/assets/certificates/algorithm/Bubble Sort.pdf",
+            "path": "/assets/certificates/algorithm/Bubble Sort.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Graph Search",
-            "path": "src/assets/certificates/algorithm/Graph Search.pdf",
+            "path": "/assets/certificates/algorithm/Graph Search.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Data Structures & Algorithms in Python: Fundamental Data Structures",
-            "path": "src/assets/certificates/data-structure/Data Structures & Algorithms in Python_ Fundamental Data Structures.pdf",
+            "path": "/assets/certificates/data-structure/Data Structures & Algorithms in Python_ Fundamental Data Structures.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Data Structures & Algorithms in Python: Implementing Data Structures",
-            "path": "src/assets/certificates/data-structure/Data Structures & Algorithms in Python_ Implementing Data Structures.pdf",
+            "path": "/assets/certificates/data-structure/Data Structures & Algorithms in Python_ Implementing Data Structures.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Data Structures & Algorithms in Python: Implementing Sorting Algorithms",
-            "path": "src/assets/certificates/data-structure/Data Structures & Algorithms in Python_ Implementing Sorting Algorithms.pdf",
+            "path": "/assets/certificates/data-structure/Data Structures & Algorithms in Python_ Implementing Sorting Algorithms.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Data Structures & Algorithms in Python: Sorting Algorithms",
-            "path": "src/assets/certificates/data-structure/Data Structures & Algorithms in Python_ Sorting Algorithms.pdf",
+            "path": "/assets/certificates/data-structure/Data Structures & Algorithms in Python_ Sorting Algorithms.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Data Structures & Algorithms in Python: Trees & Graphs",
-            "path": "src/assets/certificates/data-structure/Data Structures & Algorithms in Python_ Trees & Graphs.pdf",
+            "path": "/assets/certificates/data-structure/Data Structures & Algorithms in Python_ Trees & Graphs.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Graphs Data Structure",
-            "path": "src/assets/certificates/data-structure/Graphs Data Structure.pdf",
+            "path": "/assets/certificates/data-structure/Graphs Data Structure.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Learn Nodes",
-            "path": "src/assets/certificates/data-structure/Learn Nodes.pdf",
+            "path": "/assets/certificates/data-structure/Learn Nodes.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Learn Queues",
-            "path": "src/assets/certificates/data-structure/Learn Queues.pdf",
+            "path": "/assets/certificates/data-structure/Learn Queues.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Learn Stacks",
-            "path": "src/assets/certificates/data-structure/Learn Stacks.pdf",
+            "path": "/assets/certificates/data-structure/Learn Stacks.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Learn Trees",
-            "path": "src/assets/certificates/data-structure/Learn Trees.pdf",
+            "path": "/assets/certificates/data-structure/Learn Trees.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Linked Lists Practice in Python",
-            "path": "src/assets/certificates/data-structure/Linked Lists Practice in Python.pdf",
+            "path": "/assets/certificates/data-structure/Linked Lists Practice in Python.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Nodes Data Structure",
-            "path": "src/assets/certificates/data-structure/Nodes Data Structure.pdf",
+            "path": "/assets/certificates/data-structure/Nodes Data Structure.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Queues Data Structure",
-            "path": "src/assets/certificates/data-structure/Queues Data Structure.pdf",
+            "path": "/assets/certificates/data-structure/Queues Data Structure.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Trees Data Structure",
-            "path": "src/assets/certificates/data-structure/Trees Data Structure.pdf",
+            "path": "/assets/certificates/data-structure/Trees Data Structure.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "The Essential Data Structures and Algorithms in Python",
-            "path": "src/assets/certificates/data-structure/The Essential Data Structures and Algorithms in Python.pdf",
+            "path": "/assets/certificates/data-structure/The Essential Data Structures and Algorithms in Python.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Creating A Safe Work Environment",
-            "path": "src/assets/certificates/others/Creating A Safe Work Environment.pdf",
+            "path": "/assets/certificates/others/Creating A Safe Work Environment.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Environment, Health & Safety (EHS) - New",
-            "path": "src/assets/certificates/others/Environment, Health & Safety (EHS) - New.pdf",
+            "path": "/assets/certificates/others/Environment, Health & Safety (EHS) - New.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Global Compliance Module FY25",
-            "path": "src/assets/certificates/others/Global Compliance Module FY25.pdf",
+            "path": "/assets/certificates/others/Global Compliance Module FY25.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "OS Processes and Threads",
-            "path": "src/assets/certificates/others/OS Processes and Threads.pdf",
+            "path": "/assets/certificates/others/OS Processes and Threads.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"
           },
           {
             "name": "Using Business Etiquette to Increase Your Professionalism",
-            "path": "src/assets/certificates/others/Using Business Etiquette to Increase Your Professionalism.pdf",
+            "path": "/assets/certificates/others/Using Business Etiquette to Increase Your Professionalism.pdf",
             "type": "pdf",
             "issuingAuthority": "Coforge Learning",
             "year": "2024"

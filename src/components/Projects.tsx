@@ -129,7 +129,7 @@ const AltTextContainer = styled.div`
 const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   return (
     <TabContent>
-      <h2>Skills & Technologies</h2>
+      <h2>Projects</h2>
 
       {projects.map((project, index) => (
         <ProjectCard key={index}>
